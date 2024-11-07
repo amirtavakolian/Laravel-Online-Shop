@@ -12,7 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
+    protected $fillable = ['mobile'];
+
     protected $hidden = [
         'remember_token',
     ];
