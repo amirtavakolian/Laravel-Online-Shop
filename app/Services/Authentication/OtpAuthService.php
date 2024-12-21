@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Authentication\OTP;
+namespace App\Services\Authentication;
 
 use App\Models\User;
 use App\Services\SMS\KavenegarService;
 use Illuminate\Support\Facades\Redis;
 
-class OTPService
+class OtpAuthService
 {
     const OTP_IS_CURRENLTY_GENERATED = 'otp_is_currently_generated';
     const OTP_CODE_IS_SENT = 'enterance_code_is_sent';

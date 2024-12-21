@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Services\ApiResponse\ApiResponseFacade;
-use App\Services\Authentication\OTP\OTPService;
+use App\Services\Authentication\OtpAuthService;
 use Illuminate\Http\Request;
 
-class OTPController extends Controller
+class OtpAuthController extends Controller
 {
 
-    public function __construct(private OTPService $OTPService)
+    public function __construct(private OtpAuthService $OTPService)
     {
     }
 
@@ -21,8 +21,8 @@ class OTPController extends Controller
         $loginResult = $this->OTPService->login($request->input('mobile'));
 
         $message = match ($loginResult) {
-            OTPService::OTP_IS_CURRENLTY_GENERATED => __('messages.auth.' . OTPService::OTP_IS_CURRENLTY_GENERATED),
-            OTPService::OTP_CODE_IS_SENT => __('messages.auth.' . OTPService::OTP_CODE_IS_SENT),
+            OtpAuthService::OTP_IS_CURRENLTY_GENERATED => __('messages.auth.' . OtpAuthService::OTP_IS_CURRENLTY_GENERATED),
+            OtpAuthService::OTP_CODE_IS_SENT => __('messages.auth.' . OtpAuthService::OTP_CODE_IS_SENT),
         };
 
         return ApiResponseFacade::setMessage(__($message))->setData([])->build()->response();
