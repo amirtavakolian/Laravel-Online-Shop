@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('mobile')->unique();
+            $table->string('password', 150);
             $table->integer('daily_visits_count')->default(0);
             $table->timestamp('last_seen_at')->nullable();
             $table->rememberToken();
