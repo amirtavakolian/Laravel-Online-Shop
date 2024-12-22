@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\ApiResponse\ApiResponseFacade;
 use App\Services\Authentication\OtpAuthService;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class OtpAuthController extends Controller
     {
         $request->validate(['mobile' => ['required', 'regex:/((0?9)|(\+?989))\d{2}\W?\d{3}\W?\d{4}/']]);
 
-        $loginResult = $this->OTPService->login($request->input('mobile'));
+        $loginResult = $this->OTPService->sendOtp($request->input('mobile'));
 
         $message = match ($loginResult) {
             OtpAuthService::OTP_IS_CURRENLTY_GENERATED => __('messages.auth.' . OtpAuthService::OTP_IS_CURRENLTY_GENERATED),
@@ -35,10 +36,15 @@ class OtpAuthController extends Controller
             'otp' => 'required|numeric|max_digits:4'
         ]);
 
-        $verifyResult = $this->OTPService->verify($request->input('mobile'), $request->input('otp'));
+        $verifyResultMessage = $this->OTPService->verify($request->input('mobile'), $request->input('otp'));
 
-        return ApiResponseFacade::setData(['token' => $verifyResult['token']])
-            ->setMessage($verifyResult['message'])
+        if(is_null($verifyResultMessage)){
+            $token = User::query()->firstOrCreate(['mobile' => $request->input('mobile')], [])->createToken('API')->plainTextToken;
+            $this->OTPService->removeOtpCode($request->input('mobile'));
+        }
+
+        return ApiResponseFacade::setData(['token' => $token ?? ''])
+            ->setMessage($verifyResultMessage ?? '')
             ->build()
             ->response();
     }

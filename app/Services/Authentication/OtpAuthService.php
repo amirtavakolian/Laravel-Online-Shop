@@ -17,7 +17,7 @@ class OtpAuthService
     {
     }
 
-    public function login($mobile)
+    public function sendOtp($mobile)
     {
         if ($this->isOtpGenerated($mobile)) return self::OTP_IS_CURRENLTY_GENERATED;
 
@@ -26,25 +26,6 @@ class OtpAuthService
         $this->kavenegarService->sendOtpCode($mobile, $this->getOtpCode($mobile));
 
         return self::OTP_CODE_IS_SENT;
-    }
-
-    public function verify($mobile, $userOtp)
-    {
-        $generatedOtpCode = $this->getOtpCode($mobile);
-
-        if (is_null($generatedOtpCode)) $message = __('messages.auth.' . self::OTP_CODE_IS_EXPIRED);
-
-        if (!is_null($generatedOtpCode) && $generatedOtpCode != $userOtp) $message = __('messages.auth.' . self::OTP_CODE_IS_WRONG);
-
-        if (!isset($message)) {
-            $this->removeOtpCode($mobile);
-            $token = User::query()->firstOrCreate(['mobile' => $mobile], [])->createToken('API')->plainTextToken;
-        }
-
-        return [
-            'message' => $message ?? '',
-            'token' => $token ?? ''
-        ];
     }
 
     private function isOtpGenerated($mobile)
@@ -62,7 +43,18 @@ class OtpAuthService
         return Redis::get($mobile . '_otp');
     }
 
-    private function removeOtpCode($mobile)
+    public function verify($mobile, $userOtp)
+    {
+        $generatedOtpCode = $this->getOtpCode($mobile);
+
+        if (is_null($generatedOtpCode)) $message = __('messages.auth.' . self::OTP_CODE_IS_EXPIRED);
+
+        if (!is_null($generatedOtpCode) && $generatedOtpCode != $userOtp) $message = __('messages.auth.' . self::OTP_CODE_IS_WRONG);
+
+        return $message ?? null;
+    }
+
+    public function removeOtpCode($mobile)
     {
         return Redis::del($mobile . '_otp');
     }
