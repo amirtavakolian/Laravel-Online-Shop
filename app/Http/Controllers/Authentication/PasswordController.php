@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Authentication;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginWithPasswordRequest;
 use App\Http\Requests\Auth\SetPasswordForMobileRequest;
-use App\Models\User;
 use App\Services\ApiResponse\ApiResponseFacade;
 use App\Services\Authentication\OtpAuthService;
-use Illuminate\Http\Request;
+use App\Services\Authentication\PasswordAuth\PasswordAuthService;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
-
-    public function __construct(private OtpAuthService $OTPService)
+    public function __construct(private OtpAuthService $OTPService, private PasswordAuthService $passwordAuthService)
     {
     }
 
@@ -51,9 +51,9 @@ class PasswordController extends Controller
         return ApiResponseFacade::setData(['is_password_set' => (bool)auth()->user()->password])->build()->response();
     }
 
-    public function login()
+    public function login(LoginWithPasswordRequest $request)
     {
-
+        return $this->passwordAuthService->login($request->input('mobile'), $request->input('password'));
     }
 
 

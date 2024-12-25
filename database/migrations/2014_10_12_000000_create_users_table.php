@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password', 150);
             $table->integer('daily_visits_count')->default(0);
             $table->timestamp('last_seen_at')->nullable();
+            $table->enum('status', ['active', 'deactive', 'locked'])->default('active');
             $table->rememberToken();
             $table->timestamps();
         });
