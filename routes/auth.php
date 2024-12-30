@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Authentication\EmailRegistrationController;
+use App\Http\Controllers\Authentication\ForgetPasswordController;
 use App\Http\Controllers\Authentication\OtpAuthController;
 use App\Http\Controllers\Authentication\PasswordController;
 use App\Http\Controllers\Authentication\VerificationController;
@@ -18,6 +19,8 @@ Route::group(['prefix' => '/auth/password', 'middleware' => 'auth:sanctum'], fun
     Route::post('/set-password', [PasswordController::class, 'setPassword']);
     Route::post('/send-verification-code', [PasswordController::class, 'sendVerificationCode'])->middleware(['throttle:3,1']);
     Route::post('/login', [PasswordController::class, 'login'])->withoutMiddleware('auth:sanctum');
+    Route::post('/reset', [ForgetPasswordController::class, 'reset'])->withoutMiddleware('auth:sanctum');
+    Route::post('/reset/verify', [ForgetPasswordController::class, 'verify'])->withoutMiddleware('auth:sanctum');
 });
 
 Route::group(['prefix' => '/auth/email'], function () {

@@ -14,6 +14,12 @@ return [
         'account_lock_because_of_to_many_wrong_password' => 'اکانت شما به دلیل وارد کردن پسورد اشتباه به دفعات بالا قفل شد لطفا با پشتیبانی تماس بگیرید',
         'you_have_registred_succesfully' => 'ثبت نام شما با موفقیت انجام شد',
         'email_has_been_verified' => 'ایمیل شما با موفقیت تایید شد',
-        'verification_link_has_sent' => 'لینک تایید ایمیل ارسال شد'
+        'verification_link_has_sent' => 'لینک تایید ایمیل ارسال شد',
+        'forget_password_code_has_sent' => 'کد فراموشی رمز عبور برای شما ارسال شد. لطفا ایمیل خود را چک کنید',
+        'email_not_exist' => 'ایمیل وارد شده موجود نمیباشد',
+        'the_requested_code_was_removed_due_to_repeated_errors_please_request_a_new_code' => 'کد درخواستی شما به دلیل خطاهای مکرر حذف شد. لطفاً کد جدید درخواست نمایید',
+        'your_email_or_code_is_wrong' => 'ایمیل یا کد وارد شده صحیح نمیباشد',
+        'your_password_changed_successfully' => 'پسورد شما با موفقیت تغییر کرد'
+
     ]
 ];
