@@ -24,5 +24,6 @@ Route::group(['prefix' => '/auth/email'], function () {
 
     Route::post('/register', [EmailRegistrationController::class, 'register']);
     Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+    Route::post('/verify/generate', [VerificationController::class, 'sendLink'])->middleware(['auth:sanctum', 'throttle:60,3']);
 });
 

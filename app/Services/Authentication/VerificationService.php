@@ -4,6 +4,7 @@ namespace App\Services\Authentication;
 
 use App\Models\User;
 use App\Services\ApiResponse\ApiResponseFacade;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationService
 {
@@ -11,9 +12,7 @@ class VerificationService
     {
         abort_unless($request->hasValidSignature(), 419);
 
-        User::query()->where('id', $id)->first()->update([
-            'email_verified_at' => now()
-        ]);
+        Auth::user()->markEmailAsVerified();
 
         return ApiResponseFacade::setMessage(__('messages.auth.email_has_been_verified'))->build()->response();
     }

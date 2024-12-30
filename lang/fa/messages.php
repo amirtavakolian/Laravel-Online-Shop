@@ -13,6 +13,7 @@ return [
         'user_or_password_is_wrong' => 'شماره موبایل یا پسورد وارد شده اشتباه است',
         'account_lock_because_of_to_many_wrong_password' => 'اکانت شما به دلیل وارد کردن پسورد اشتباه به دفعات بالا قفل شد لطفا با پشتیبانی تماس بگیرید',
         'you_have_registred_succesfully' => 'ثبت نام شما با موفقیت انجام شد',
-        'email_has_been_verified' => 'ایمیل شما با موفقیت تایید شد'
+        'email_has_been_verified' => 'ایمیل شما با موفقیت تایید شد',
+        'verification_link_has_sent' => 'لینک تایید ایمیل ارسال شد'
     ]
 ];
