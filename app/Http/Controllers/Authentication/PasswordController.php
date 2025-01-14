@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Authentication;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginWithPasswordRequest;
 use App\Http\Requests\Auth\SetPasswordForMobileRequest;
 use App\Services\ApiResponse\ApiResponseFacade;
 use App\Services\Authentication\OtpAuthService;
 use App\Services\Authentication\PasswordAuth\PasswordAuthService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
