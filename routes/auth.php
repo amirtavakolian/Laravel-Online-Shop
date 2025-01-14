@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Authentication\EmailRegistrationController;
 use App\Http\Controllers\Authentication\ForgetPasswordController;
+use App\Http\Controllers\Authentication\LinkAuthController;
 use App\Http\Controllers\Authentication\OtpAuthController;
 use App\Http\Controllers\Authentication\PasswordController;
 use App\Http\Controllers\Authentication\VerificationController;
@@ -28,5 +29,11 @@ Route::group(['prefix' => '/auth/email'], function () {
     Route::post('/register', [EmailRegistrationController::class, 'register']);
     Route::get('/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
     Route::post('/verify/generate', [VerificationController::class, 'sendLink'])->middleware(['auth:sanctum', 'throttle:60,3']);
+});
+
+Route::group(['prefix' => '/auth'], function () {
+
+    Route::post('/login-link', [LinkAuthController::class, 'generate']);
+    Route::post('/verify-login', [LinkAuthController::class, 'verify']);
 });
 

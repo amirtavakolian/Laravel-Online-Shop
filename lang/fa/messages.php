@@ -19,7 +19,8 @@ return [
         'email_not_exist' => 'ایمیل وارد شده موجود نمیباشد',
         'the_requested_code_was_removed_due_to_repeated_errors_please_request_a_new_code' => 'کد درخواستی شما به دلیل خطاهای مکرر حذف شد. لطفاً کد جدید درخواست نمایید',
         'your_email_or_code_is_wrong' => 'ایمیل یا کد وارد شده صحیح نمیباشد',
-        'your_password_changed_successfully' => 'پسورد شما با موفقیت تغییر کرد'
-
+        'your_password_changed_successfully' => 'پسورد شما با موفقیت تغییر کرد',
+        'for_using_login_with_link_feature_please_register_with_your_email_first' => 'برای استفاده از قابلیت لاگین با لینک مستقیم؛ لطفا یکبار با ایمیل وارد شده ثبت نام کنید سپس دوباره اقدام نمایید',
+        'login_url_is_sent_please_check_your_email' => 'لینک ورود برای شما ارسال شد. لطفا ایمیل خود را چک کنید'
     ]
 ];
