@@ -6,6 +6,7 @@ use App\Http\Controllers\Authentication\LinkAuthController;
 use App\Http\Controllers\Authentication\OtpAuthController;
 use App\Http\Controllers\Authentication\PasswordController;
 use App\Http\Controllers\Authentication\VerificationController;
+use App\Http\Controllers\TwoAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/otp'], function () {
@@ -37,3 +38,8 @@ Route::group(['prefix' => '/auth'], function () {
     Route::post('/verify-login', [LinkAuthController::class, 'verify']);
 });
 
+Route::group(['prefix' => '/twoauth', 'middleware' => 'auth:sanctum'], function () {
+
+    Route::post('/generate-code', [TwoAuthController::class, 'generate']);
+    Route::post('/verify-code', [TwoAuthController::class, 'verify']);
+});

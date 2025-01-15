@@ -4,7 +4,7 @@ return [
     'auth' => [
         'enterance_code_is_sent' => 'کد ورود برای شما ارسال شد',
         'your_login_code' => 'کد ورود به سایت :code',
-        'otp_is_currently_generated' =>'کد ورود قبلا برای شما ارسال شده است',
+        'otp_is_currently_generated' => 'کد ورود قبلا برای شما ارسال شده است',
         'your_enterance_code_is_expired' => 'کد وارد شده منقضی شده است. لطفا مجددا وارد شوید',
         'otp_code_is_wrong' => 'کد وارد شده اشتباه است',
         'password_has_been_set' => 'پسورد شما با موفقیت آپدیت شد',
@@ -21,6 +21,11 @@ return [
         'your_email_or_code_is_wrong' => 'ایمیل یا کد وارد شده صحیح نمیباشد',
         'your_password_changed_successfully' => 'پسورد شما با موفقیت تغییر کرد',
         'for_using_login_with_link_feature_please_register_with_your_email_first' => 'برای استفاده از قابلیت لاگین با لینک مستقیم؛ لطفا یکبار با ایمیل وارد شده ثبت نام کنید سپس دوباره اقدام نمایید',
-        'login_url_is_sent_please_check_your_email' => 'لینک ورود برای شما ارسال شد. لطفا ایمیل خود را چک کنید'
+        'login_url_is_sent_please_check_your_email' => 'لینک ورود برای شما ارسال شد. لطفا ایمیل خود را چک کنید',
+        'email_not_set' => 'ایمیل شما ثبت نشده است',
+        'mobile_not_set' => 'شماره موبایل شما ثبت نشده است',
+        'your_two_auth_code' => 'رمز دو مرحله ایی شما: :code',
+        'two_auth_code_has_been_sent' => 'کد 2 مرحله ایی برای شما ارسال شد',
+        'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است'
     ]
 ];

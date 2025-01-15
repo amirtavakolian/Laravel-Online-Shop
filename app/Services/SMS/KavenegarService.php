@@ -17,19 +17,24 @@ class KavenegarService
     {
         $this->generateOtpSmsMessage($mobile, $otpCode);
 
-        try {
-            $api = new KavenegarApi(env('KAVENEGAR_API'));
-            // $api->send([], $this->smsMessage->getReceptor(), $this->smsMessage->getMessage());
-            Log::info($otpCode);
-
-        } catch (Exception $e) {
-            Log::info($e->getMessage());
-        }
+        $this->send($otpCode);
     }
 
     private function generateOtpSmsMessage($mobile, $otpCode)
     {
-        $this->smsMessage->setMessage(__('messages.auth.your_login_code', ['code' => $otpCode]))
+       resolve(SmsMessage::class)->setMessage(__('messages.auth.your_login_code', ['code' => $otpCode]))
             ->setReceptor($mobile);
+    }
+
+    public function send()
+    {
+        try {
+            $api = new KavenegarApi(env('KAVENEGAR_API'));
+            // $api->send([], $this->smsMessage->getReceptor(), $this->smsMessage->getMessage());
+            Log::info($this->smsMessage->getMessage());
+
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+        }
     }
 }
