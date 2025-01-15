@@ -13,19 +13,6 @@ class KavenegarService
     {
     }
 
-    public function sendOtpCode($mobile, $otpCode)
-    {
-        $this->generateOtpSmsMessage($mobile, $otpCode);
-
-        $this->send($otpCode);
-    }
-
-    private function generateOtpSmsMessage($mobile, $otpCode)
-    {
-       resolve(SmsMessage::class)->setMessage(__('messages.auth.your_login_code', ['code' => $otpCode]))
-            ->setReceptor($mobile);
-    }
-
     public function send()
     {
         try {

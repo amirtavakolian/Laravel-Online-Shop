@@ -5,8 +5,8 @@ use App\Http\Controllers\Authentication\ForgetPasswordController;
 use App\Http\Controllers\Authentication\LinkAuthController;
 use App\Http\Controllers\Authentication\OtpAuthController;
 use App\Http\Controllers\Authentication\PasswordController;
+use App\Http\Controllers\Authentication\TwoAuthController;
 use App\Http\Controllers\Authentication\VerificationController;
-use App\Http\Controllers\TwoAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/otp'], function () {

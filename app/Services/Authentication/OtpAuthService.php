@@ -4,6 +4,7 @@ namespace App\Services\Authentication;
 
 use App\Models\User;
 use App\Services\SMS\KavenegarService;
+use App\Services\SMS\SmsMessage;
 use Illuminate\Support\Facades\Redis;
 
 class OtpAuthService
@@ -13,39 +14,28 @@ class OtpAuthService
     const OTP_CODE_IS_EXPIRED = 'your_enterance_code_is_expired';
     const OTP_CODE_IS_WRONG = 'otp_code_is_wrong';
 
-    public function __construct(private KavenegarService $kavenegarService)
+    public function __construct()
     {
     }
 
     public function sendOtp($mobile)
     {
-        if ($this->isOtpGenerated($mobile)) return self::OTP_IS_CURRENLTY_GENERATED;
+        if (Redis::ttl($mobile . '_otp') > 20) return self::OTP_IS_CURRENLTY_GENERATED;
 
-        $this->generateOtpCode($mobile);
+        Redis::setex($mobile . '_otp', 120, rand(1000, 9999));
 
-        $this->kavenegarService->sendOtpCode($mobile, $this->getOtpCode($mobile));
+        $smsMessage = resolve(SmsMessage::class)
+            ->setMessage(__('messages.auth.your_login_code', ['code' => Redis::get($mobile . '_otp')]))
+            ->setReceptor($mobile);
+
+        resolve(KavenegarService::class, ['smsMessage' => $smsMessage])->send();
 
         return self::OTP_CODE_IS_SENT;
     }
 
-    private function isOtpGenerated($mobile)
-    {
-        return Redis::ttl($mobile . '_otp') > 20;
-    }
-
-    private function generateOtpCode($mobile)
-    {
-        Redis::setex($mobile . '_otp', 120, rand(1000, 9999));
-    }
-
-    private function getOtpCode($mobile)
-    {
-        return Redis::get($mobile . '_otp');
-    }
-
     public function verify($mobile, $userOtp)
     {
-        $generatedOtpCode = $this->getOtpCode($mobile);
+        $generatedOtpCode = Redis::get($mobile . '_otp');
 
         if (is_null($generatedOtpCode)) $message = __('messages.auth.' . self::OTP_CODE_IS_EXPIRED);
 
