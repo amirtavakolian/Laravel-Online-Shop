@@ -13,13 +13,13 @@ class RolePolicy
         return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
 
-    public function update(User $user, Role $role): bool
+    public function update(User $user): bool
     {
         return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
 
-    public function delete(User $user, Role $role): bool
+    public function delete(User $user): bool
     {
-        //
+        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\RolePermission;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RolePermission\DeleteRoleRequest;
 use App\Http\Requests\RolePermission\StoreRolesRequest;
 use App\Http\Requests\RolePermission\UpdateRoleRequest;
 use App\Services\ApiResponse\ApiResponseFacade;
@@ -36,4 +35,13 @@ class RoleController extends Controller
             ->build()->response();
     }
 
+    public function destroy(Role $role)
+    {
+        $this->authorize('delete', Role::class);
+
+        $role->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.role_perm.roles_has_been_deleted_successfully'))
+            ->build()->response();
+    }
 }
