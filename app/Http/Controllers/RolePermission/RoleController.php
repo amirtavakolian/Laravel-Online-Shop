@@ -5,11 +5,24 @@ namespace App\Http\Controllers\RolePermission;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RolePermission\StoreRolesRequest;
 use App\Http\Requests\RolePermission\UpdateRoleRequest;
+use App\Http\Resources\RolePermission\RoleResource;
 use App\Services\ApiResponse\ApiResponseFacade;
+use Illuminate\Support\Arr;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
+    public function index()
+    {
+        $this->authorize('create', Role::class);
+
+        $roles = Arr::flatten(RoleResource::collection(Role::all()));
+
+        return ApiResponseFacade::setData($roles)
+            ->build()
+            ->response();
+    }
 
     public function store(StoreRolesRequest $request)
     {
