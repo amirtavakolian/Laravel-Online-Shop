@@ -27,5 +27,8 @@ return [
         'your_two_auth_code' => 'رمز دو مرحله ایی شما: :code',
         'two_auth_code_has_been_sent' => 'کد 2 مرحله ایی برای شما ارسال شد',
         'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است'
+    ],
+    'role_perm' => [
+        'roles_has_been_created_successfully' => 'رول مورد نظر با موفیت ساخته شد'
     ]
 ];

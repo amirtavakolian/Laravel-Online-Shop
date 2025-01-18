@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App\Enum\Authentication;
+use App\Policies\RolePermission\RolePolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
 use App\Services\Authentication\TwoAuth\CallTwoAuth;
 use App\Services\Authentication\TwoAuth\EmailTwoAuth;
 use App\Services\Authentication\TwoAuth\SmsTwoAuth;
 use App\Services\Authentication\TwoAuth\TwoAuth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Permission\Models\Role;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
                 Authentication::SEND_TWO_AUTH_BY_CALL->value => new CallTwoAuth(),
             };
         });
+
+        Gate::policy(Role::class, RolePolicy::class);
     }
 
     /**
