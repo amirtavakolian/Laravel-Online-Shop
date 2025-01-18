@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\RolePermission;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RolePermission\DeleteRoleRequest;
 use App\Http\Requests\RolePermission\StoreRolesRequest;
+use App\Http\Requests\RolePermission\UpdateRoleRequest;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Spatie\Permission\Models\Role;
 
@@ -23,4 +25,15 @@ class RoleController extends Controller
         return ApiResponseFacade::setMessage(__('messages.role_perm.roles_has_been_created_successfully'))
             ->build()->response();
     }
+
+    public function update(UpdateRoleRequest $request, Role $role)
+    {
+        $this->authorize('update', Role::class);
+
+        $role->update(['name' => $request->validated('role')]);
+
+        return ApiResponseFacade::setMessage(__('messages.role_perm.roles_has_been_updated_successfully'))
+            ->build()->response();
+    }
+
 }

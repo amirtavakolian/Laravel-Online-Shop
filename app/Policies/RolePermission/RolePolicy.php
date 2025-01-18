@@ -15,7 +15,7 @@ class RolePolicy
 
     public function update(User $user, Role $role): bool
     {
-        //
+        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
 
     public function delete(User $user, Role $role): bool

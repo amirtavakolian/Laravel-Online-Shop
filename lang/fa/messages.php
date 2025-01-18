@@ -29,6 +29,7 @@ return [
         'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است'
     ],
     'role_perm' => [
-        'roles_has_been_created_successfully' => 'رول مورد نظر با موفیت ساخته شد'
+        'roles_has_been_created_successfully' => 'رول مورد نظر با موفیت ساخته شد',
+        'roles_has_been_updated_successfully' => 'رول مورد نظر با موفیت آپدیت شد'
     ]
 ];
