@@ -4,6 +4,7 @@ namespace App\Http\Controllers\RolePermission;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RolePermission\StorePermissionsRequest;
+use App\Http\Requests\RolePermission\UpdatePermissionRequest;
 use App\Http\Resources\RolePermission\PermissionResource;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Illuminate\Http\Request;
@@ -33,6 +34,16 @@ class PermissionController extends Controller
         }
 
         return ApiResponseFacade::setMessage(__('messages.role_perm.permissions_has_been_created_successfully'))
+            ->build()->response();
+    }
+
+    public function update(UpdatePermissionRequest $request, Permission $permission)
+    {
+        $this->authorize('update', Role::class);
+
+        $permission->update(['name' => $request->validated('permission')]);
+
+        return ApiResponseFacade::setMessage(__('messages.role_perm.permissions_has_been_updated_successfully'))
             ->build()->response();
     }
 }

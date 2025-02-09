@@ -29,10 +29,11 @@ return [
         'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است'
     ],
     'role_perm' => [
-        'roles_has_been_created_successfully' => 'رول مورد نظر با موفیت ساخته شد',
-        'roles_has_been_updated_successfully' => 'رول مورد نظر با موفیت آپدیت شد',
-        'roles_has_been_deleted_successfully' => 'رول مورد نظر با موفیت حذف شد',
+        'roles_has_been_created_successfully' => 'رول مورد نظر با موفقیت ساخته شد',
+        'roles_has_been_updated_successfully' => 'رول مورد نظر با موفقیت آپدیت شد',
+        'roles_has_been_deleted_successfully' => 'رول مورد نظر با موفقیت حذف شد',
         'permissions_has_been_created_successfully' => 'سطوح دسترسی مورد نظر با موفقیت ساخته شد',
+        'permissions_has_been_updated_successfully' => 'سطح دسترسی مورد نظر با موفقیت آپدیت شد',
 
     ]
 ];
