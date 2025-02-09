@@ -31,6 +31,8 @@ return [
     'role_perm' => [
         'roles_has_been_created_successfully' => 'رول مورد نظر با موفیت ساخته شد',
         'roles_has_been_updated_successfully' => 'رول مورد نظر با موفیت آپدیت شد',
-        'roles_has_been_deleted_successfully' => 'رول مورد نظر با موفیت حذف شد'
+        'roles_has_been_deleted_successfully' => 'رول مورد نظر با موفیت حذف شد',
+        'permissions_has_been_created_successfully' => 'سطوح دسترسی مورد نظر با موفقیت ساخته شد',
+
     ]
 ];
