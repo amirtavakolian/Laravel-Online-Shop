@@ -32,8 +32,8 @@ return [
         'roles_has_been_created_successfully' => 'رول مورد نظر با موفقیت ساخته شد',
         'roles_has_been_updated_successfully' => 'رول مورد نظر با موفقیت آپدیت شد',
         'roles_has_been_deleted_successfully' => 'رول مورد نظر با موفقیت حذف شد',
-        'permissions_has_been_created_successfully' => 'سطوح دسترسی مورد نظر با موفقیت ساخته شد',
+        'permissions_has_been_created_successfully' => 'سطح دسترسی مورد نظر با موفقیت ساخته شد',
         'permissions_has_been_updated_successfully' => 'سطح دسترسی مورد نظر با موفقیت آپدیت شد',
-
+        'permissions_has_been_deleted_successfully' => 'سطح دسترسی مورد نظر با موفقیت حذف شد',
     ]
 ];

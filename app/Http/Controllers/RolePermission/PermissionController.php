@@ -46,4 +46,14 @@ class PermissionController extends Controller
         return ApiResponseFacade::setMessage(__('messages.role_perm.permissions_has_been_updated_successfully'))
             ->build()->response();
     }
+
+    public function destroy(Permission $permission)
+    {
+        $this->authorize('delete', Role::class);
+
+        $permission->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.role_perm.permissions_has_been_deleted_successfully'))
+            ->build()->response();
+    }
 }
