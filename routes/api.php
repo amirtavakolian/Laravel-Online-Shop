@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
 use App\Http\Controllers\RolePermission\PermissionController;
 use App\Http\Controllers\RolePermission\RoleController;
@@ -13,3 +14,5 @@ Route::group(['prefix' => '/users', 'middleware' => 'auth:sanctum'], function ()
     Route::get('/{user}/roles', [UserRoleController::class, 'roles']);
     Route::delete('/{user}/roles', [UserRoleController::class, 'remove']);
 });
+
+Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');
