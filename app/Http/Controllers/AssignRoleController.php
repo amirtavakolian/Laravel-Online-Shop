@@ -20,5 +20,10 @@ class AssignRoleController extends Controller
         return ApiResponseFacade::setMessage(__('messages.role_perm.role_has_been_assigned_successfully'))
             ->build()->response();
     }
+
+    public function roles(User $user)
+    {
+        return ApiResponseFacade::setData($user->roles->toArray())->build()->response();
+    }
 }
 

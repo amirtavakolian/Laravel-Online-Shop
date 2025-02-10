@@ -10,4 +10,5 @@ Route::apiResource('permissions', PermissionController::class)->middleware('auth
 
 Route::group(['prefix' => '/users'], function () {
     Route::post('/{user}/assign-role', [AssignRoleController::class, 'assign']);
+    Route::get('/{user}/roles', [AssignRoleController::class, 'roles']);
 })->middleware('auth:sanctum');
