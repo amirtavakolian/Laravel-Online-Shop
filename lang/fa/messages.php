@@ -35,6 +35,7 @@ return [
         'permissions_has_been_created_successfully' => 'سطح دسترسی مورد نظر با موفقیت ساخته شد',
         'permissions_has_been_updated_successfully' => 'سطح دسترسی مورد نظر با موفقیت آپدیت شد',
         'permissions_has_been_deleted_successfully' => 'سطح دسترسی مورد نظر با موفقیت حذف شد',
-        'role_has_been_assigned_successfully' => 'نقش کاربری با موفقیت اهدا شد'
+        'role_has_been_assigned_successfully' => 'نقش کاربری با موفقیت اهدا شد',
+        'user_roles_has_been_removed_successfully' => 'رول کاربر با موفقیت حذف شد'
     ]
 ];

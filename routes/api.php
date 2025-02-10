@@ -11,4 +11,5 @@ Route::apiResource('permissions', PermissionController::class)->middleware('auth
 Route::group(['prefix' => '/users', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/{user}/assign-role', [UserRoleController::class, 'assign']);
     Route::get('/{user}/roles', [UserRoleController::class, 'roles']);
+    Route::delete('/{user}/roles', [UserRoleController::class, 'remove']);
 });

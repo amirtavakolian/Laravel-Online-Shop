@@ -27,4 +27,9 @@ class RolePolicy
     {
         return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
+
+    public function removeRole(User $user): bool
+    {
+        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+    }
 }
