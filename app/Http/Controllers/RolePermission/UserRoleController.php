@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RolePermission;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RolePermission\AssignRoleRequest;
 use App\Models\User;
 use App\Services\ApiResponse\ApiResponseFacade;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class AssignRoleController extends Controller
+class UserRoleController extends Controller
 {
 
     public function assign(AssignRoleRequest $request, User $user)
