@@ -22,4 +22,9 @@ class RolePolicy
     {
         return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
     }
+
+    public function assignRole(User $user): bool
+    {
+        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+    }
 }
