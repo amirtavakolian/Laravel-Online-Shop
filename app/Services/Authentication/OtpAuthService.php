@@ -22,7 +22,7 @@ class OtpAuthService
     {
         if (Redis::ttl($mobile . '_otp') > 20) return self::OTP_IS_CURRENLTY_GENERATED;
 
-        Redis::setex($mobile . '_otp', 120, rand(1000, 9999));
+        Redis::setex($mobile . '_otp', 120, rand(100000, 999999));
 
         $smsMessage = resolve(SmsMessage::class)
             ->setMessage(__('messages.auth.your_login_code', ['code' => Redis::get($mobile . '_otp')]))
