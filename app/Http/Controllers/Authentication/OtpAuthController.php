@@ -33,7 +33,7 @@ class OtpAuthController extends Controller
     {
         $request->validate([
             'mobile' => ['required', 'regex:/((0?9)|(\+?989))\d{2}\W?\d{3}\W?\d{4}/'],
-            'otp' => 'required|numeric|max_digits:4'
+            'otp' => 'required|numeric|max_digits:6'
         ]);
 
         $verifyResultMessage = $this->OTPService->verify($request->input('mobile'), $request->input('otp'));

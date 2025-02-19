@@ -7,6 +7,7 @@ use App\Http\Controllers\Authentication\OtpAuthController;
 use App\Http\Controllers\Authentication\PasswordController;
 use App\Http\Controllers\Authentication\TwoAuthController;
 use App\Http\Controllers\Authentication\VerificationController;
+use App\Http\Controllers\Coworkers\Authentication\CoworkersAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/otp'], function () {
@@ -43,3 +44,10 @@ Route::group(['prefix' => '/twoauth', 'middleware' => 'auth:sanctum'], function 
     Route::post('/generate-code', [TwoAuthController::class, 'generate']);
     Route::post('/verify-code', [TwoAuthController::class, 'verify']);
 });
+
+Route::group(['prefix' => '/auth/coworkers'], function () {
+    Route::post('/register', [CoworkersAuthController::class, 'register']);
+    Route::post('/login', [CoworkersAuthController::class, 'login'])->middleware(['throttle:3,1']);
+    Route::post('/verify', [CoworkersAuthController::class, 'verify']);
+});
+

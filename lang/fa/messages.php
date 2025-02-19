@@ -26,7 +26,8 @@ return [
         'mobile_not_set' => 'شماره موبایل شما ثبت نشده است',
         'your_two_auth_code' => 'رمز دو مرحله ایی شما: :code',
         'two_auth_code_has_been_sent' => 'کد 2 مرحله ایی برای شما ارسال شد',
-        'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است'
+        'wrong_two_auth_code' => 'کد 2 مرحله ایی وارد شده اشتباه است',
+        'coworker_successfully_registered' => 'کارمند مورد نظر با موفقیت ثبت نام شد'
     ],
     'role_perm' => [
         'roles_has_been_created_successfully' => 'رول مورد نظر با موفقیت ساخته شد',
