@@ -29,7 +29,8 @@ class PermissionController extends Controller
 
         foreach ($request->validated('permissions') as $permission) {
             Permission::query()->create([
-                "name" => $permission
+                "name" => $permission,
+                "guard_name" => $request->input('guard_name')
             ]);
         }
 

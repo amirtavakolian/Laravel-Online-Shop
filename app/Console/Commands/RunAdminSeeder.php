@@ -28,22 +28,20 @@ class RunAdminSeeder extends Command
      */
     public function handle(AdminSetupSeeder $seeder)
     {
-        $phoneNumber = $this->ask("Phone number: ");
-
-        $firstName = $this->ask("First name: ");
-
-        $lastName = $this->ask("Last name: ");
-
-        $password = $this->ask("Password: ");
-
-        if (!is_numeric($phoneNumber)) {
-            echo "Phone number must be a number";
-            return;
-        }
+        $phoneNumber = $this->ask("Phone number");
+        $firstName = $this->ask("First name");
+        $lastName = $this->ask("Last name");
+        $password = $this->ask("Password");
+        $marriageStatus = $this->ask("Marriage status");
+        $birthdayDate = "1993-05-29 14:30:00";
+        $gender = 'man';
+        $emergencyNumber = $this->ask("Emergency number");
+        $position = 'مدیر';
 
         $this->info("Running admin seeder");
 
-        $seeder->run($phoneNumber, $firstName, $lastName, $password);
+        $seeder->run($phoneNumber, $firstName, $lastName, $password, $marriageStatus, $birthdayDate,
+            $gender, $emergencyNumber, $position);
 
         $this->info('Seeder completed successfully.');
     }

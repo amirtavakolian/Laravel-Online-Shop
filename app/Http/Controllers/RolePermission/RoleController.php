@@ -30,7 +30,8 @@ class RoleController extends Controller
 
         foreach ($request->validated('roles') as $role) {
             Role::query()->create([
-                "name" => $role
+                "name" => $role,
+                "guard_name" => $request->input('guard_name')
             ]);
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\RolePermission;
 
+use App\Rules\RolePermission\PermissionExist;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePermissionsRequest extends FormRequest
@@ -13,9 +14,16 @@ class StorePermissionsRequest extends FormRequest
      */
     public function rules(): array
     {
+        $guards = array_keys(config('auth.guards'));
+
+        $this->merge([
+            "guard_name" => $this->input('coworkers_guard') ? $guards[2] : $guards[1]
+        ]);
+
         return [
             "permissions" => "required|array",
-            "permissions.*" => "string|min:4|unique:permissions,name"
+            "permissions.*" => ["string", "min:4",new PermissionExist($this)],
+            "coworkers_guard" => "required|in:0,1"
         ];
     }
 }
