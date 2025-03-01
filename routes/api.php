@@ -1,18 +1,25 @@
 <?php
 
+use App\Http\Controllers\RolePermission\CoworkerRoleController;
 use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
 use App\Http\Controllers\RolePermission\PermissionController;
 use App\Http\Controllers\RolePermission\RoleController;
 use Illuminate\Support\Facades\Route;
 
-Route::apiResource('roles', RoleController::class)->middleware('auth:sanctum');
+Route::apiResource('roles', RoleController::class)->middleware('auth:coworkers');
 Route::apiResource('permissions', PermissionController::class)->middleware('auth:sanctum');
 
 Route::group(['prefix' => '/users', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/{user}/assign-role', [UserRoleController::class, 'assign']);
     Route::get('/{user}/roles', [UserRoleController::class, 'roles']);
     Route::delete('/{user}/roles', [UserRoleController::class, 'remove']);
+});
+
+Route::group(['prefix' => '/coworkers', 'middleware' => 'auth:coworkers'], function () {
+    Route::post('/{coworker}/assign-role', [CoworkerRoleController::class, 'assign']);
+    Route::get('/{coworker}/roles', [CoworkerRoleController::class, 'roles']);
+    Route::delete('/{coworker}/roles', [CoworkerRoleController::class, 'remove']);
 });
 
 Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');
