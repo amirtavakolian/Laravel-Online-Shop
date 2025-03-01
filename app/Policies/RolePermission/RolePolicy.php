@@ -2,39 +2,47 @@
 
 namespace App\Policies\RolePermission;
 
-use App\Models\User;
-use Spatie\Permission\Models\Role;
+use App\Enum\RolePermission\Role;
+use App\Models\Coworker;
 
 class RolePolicy
 {
 
-    public function create(User $user): bool
+    public function before(Coworker $user, string $ability): ?bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        if ($user->hasRole(Role::SUPER_ADMIN->value)) {
+            return true;
+        }
+        return null;
     }
 
-    public function update(User $user): bool
+    public function create(Coworker $user): bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        return $user->hasRole(Role::SUPER_ADMIN->value);
     }
 
-    public function delete(User $user): bool
+    public function update(Coworker $user): bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        return $user->hasRole(Role::SUPER_ADMIN->value);
     }
 
-    public function assignRole(User $user): bool
+    public function delete(Coworker $user): bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        return $user->hasRole(Role::SUPER_ADMIN->value);
     }
 
-    public function removeRole(User $user): bool
+    public function assignRole(Coworker $user): bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        return $user->hasRole(Role::SUPER_ADMIN->value);
     }
 
-    public function isAdmin(User $user): bool
+    public function removeRole(Coworker $user): bool
     {
-        return $user->hasRole(\App\Enum\RolePermission\Role::ADMIN->value);
+        return $user->hasRole(Role::SUPER_ADMIN->value);
+    }
+
+    public function isSUPER_ADMIN(Coworker $user): bool
+    {
+        return $user->hasRole(Role::SUPER_ADMIN->value);
     }
 }

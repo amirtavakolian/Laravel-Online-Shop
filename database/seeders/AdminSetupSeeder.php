@@ -35,7 +35,7 @@ class AdminSetupSeeder extends Seeder
 
         if (!Role::query()->where('name', 'admin')->exists()) {
             Role::create([
-                'name' => 'admin',
+                'name' => \App\Enum\RolePermission\Role::SUPER_ADMIN->value,
                 'guard_name' => 'coworkers'
             ]);
         }
