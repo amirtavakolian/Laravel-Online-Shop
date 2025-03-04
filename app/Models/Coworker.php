@@ -13,4 +13,9 @@ class Coworker extends Authenticatable
     use HasFactory, HasRoles, HasApiTokens;
 
     protected $guarded = [];
+
+    public function supportDepartments()
+    {
+        return $this->belongsToMany(SupportDepartment::class, 'coworkers_support_departments');
+    }
 }
