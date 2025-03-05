@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Enum\Authentication;
+use App\Models\Coworker;
+use App\Policies\Coworkers\CoworkersPolicy;
 use App\Policies\RolePermission\RolePolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
 use App\Services\Authentication\TwoAuth\CallTwoAuth;
@@ -33,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::policy(Role::class, RolePolicy::class);
+        Gate::policy(Coworker::class, CoworkersPolicy::class);
     }
 
     /**

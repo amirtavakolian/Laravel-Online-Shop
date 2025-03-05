@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Coworkers\CoworkersController;
 use App\Http\Controllers\RolePermission\CoworkerRoleController;
 use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
@@ -20,6 +21,9 @@ Route::group(['prefix' => '/coworkers', 'middleware' => 'auth:coworkers'], funct
     Route::post('/{coworker}/assign-role', [CoworkerRoleController::class, 'assign']);
     Route::get('/{coworker}/roles', [CoworkerRoleController::class, 'roles']);
     Route::delete('/{coworker}/roles', [CoworkerRoleController::class, 'remove']);
+
+    Route::post('/addToSupportDepartments', [CoworkersController::class, 'addToSupportDepartments']);
+
 });
 
 Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');

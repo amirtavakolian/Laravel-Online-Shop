@@ -11,7 +11,7 @@ class SupportDepartment extends Model
 
     public function coworkers()
     {
-        return $this->belongsToMany(Coworker::class, 'coworkers_support_departments');
+        return $this->belongsToMany(Coworker::class, 'coworker_support_department');
     }
 }
 

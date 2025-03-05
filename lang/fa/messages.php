@@ -39,5 +39,8 @@ return [
         'role_has_been_assigned_successfully' => 'نقش کاربری با موفقیت اهدا شد',
         'user_roles_has_been_removed_successfully' => 'رول کاربر با موفقیت حذف شد',
         'permissions_has_been_assigned_to_role_successfully' => 'سطوح دسترسی با موفقیت به نقش کاربر اضافه شد'
+    ],
+    'coworkers' => [
+        'coworker_added_to_support_department' => 'کارمند مورد نظر به دپارتمان پشتیبانی اضافه شد'
     ]
 ];

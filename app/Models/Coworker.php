@@ -16,6 +16,6 @@ class Coworker extends Authenticatable
 
     public function supportDepartments()
     {
-        return $this->belongsToMany(SupportDepartment::class, 'coworkers_support_departments');
+        return $this->belongsToMany(SupportDepartment::class, 'coworker_support_department');
     }
 }
