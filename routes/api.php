@@ -6,6 +6,7 @@ use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
 use App\Http\Controllers\RolePermission\PermissionController;
 use App\Http\Controllers\RolePermission\RoleController;
+use App\Http\Controllers\Ticket\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('roles', RoleController::class)->middleware('auth:coworkers');
@@ -27,3 +28,9 @@ Route::group(['prefix' => '/coworkers', 'middleware' => 'auth:coworkers'], funct
 });
 
 Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');
+
+Route::group(['prefix' => '/panel'], function () {
+    Route::apiResource('/tickets', TicketController::class);
+    Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
+
+})->middleware('auth:sanctum');

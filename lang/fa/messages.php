@@ -42,5 +42,12 @@ return [
     ],
     'coworkers' => [
         'coworker_added_to_support_department' => 'کارمند مورد نظر به دپارتمان پشتیبانی اضافه شد'
+    ],
+    'notifications' => [
+        'remind_support_team_after_15_minutes' => '15 دقیقه از ایجاد تیکت گذشته است و هنوز توسط تیم پشتیبانی بررسی نشده است. لطفاً در اسرع وقت به آن رسیدگی کنید.',
+        'remind_boss_after_15_minutes' => '15 دقیقه از ایجاد تیکت گذشته است و هنوز توسط تیم پشتیبانی بررسی نشده است.'
+    ],
+    'tickets' => [
+        'ticket_created_successfully' => 'تیکت شما با موفقیت ساخته شد'
     ]
 ];
