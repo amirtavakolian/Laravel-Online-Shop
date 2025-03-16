@@ -19,7 +19,7 @@ class ApiResponseBuilder
         return $this;
     }
 
-    public function setData(array $data)
+    public function setData(mixed $data)
     {
         $this->apiResponser->data = $data;
         return $this;

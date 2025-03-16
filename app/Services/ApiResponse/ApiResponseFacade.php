@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method ApiResponseBuilder setStatus(int $status)
- * @method ApiResponseBuilder setData(array $data)
+ * @method ApiResponseBuilder setData(mixed $data)
  * @method ApiResponseBuilder setMessage(string $message)
  * @method ApiResponseBuilder withAppends(array $appends)
  * @method ApiResponseBuilder build()
