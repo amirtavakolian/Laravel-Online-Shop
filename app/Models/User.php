@@ -19,4 +19,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'remember_token',
     ];
+
+    public function getFullnameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

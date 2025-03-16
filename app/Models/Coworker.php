@@ -18,4 +18,9 @@ class Coworker extends Authenticatable
     {
         return $this->belongsToMany(SupportDepartment::class, 'coworker_support_department');
     }
+
+    public function getFullnameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

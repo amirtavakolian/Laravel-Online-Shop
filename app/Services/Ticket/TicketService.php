@@ -27,4 +27,11 @@ class TicketService
             ->whereNotNull('closed_at')
             ->exists();
     }
+
+    public function all()
+    {
+        return Ticket::query()->whereIn('support_department_id',
+            auth()->guard('coworkers')->user()->supportDepartments->pluck('id')->toArray())
+            ->whereNull('closed_at')->get();
+    }
 }

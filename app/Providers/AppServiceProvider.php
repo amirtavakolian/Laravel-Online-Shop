@@ -5,8 +5,11 @@ namespace App\Providers;
 use App\Enum\Authentication;
 use App\Listeners\Ticket\NewTicketListener;
 use App\Models\Coworker;
+use App\Models\Ticket;
 use App\Policies\Coworkers\CoworkersPolicy;
 use App\Policies\RolePermission\RolePolicy;
+use App\Policies\Ticket\Support\SupportTicketPolicy;
+use App\Policies\Ticket\TicketPolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
 use App\Services\Authentication\TwoAuth\CallTwoAuth;
 use App\Services\Authentication\TwoAuth\EmailTwoAuth;
@@ -38,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
 
         Gate::policy(Role::class, RolePolicy::class);
         Gate::policy(Coworker::class, CoworkersPolicy::class);
+        Gate::policy(Ticket::class, TicketPolicy::class);
 
     }
 

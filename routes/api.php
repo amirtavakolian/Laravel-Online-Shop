@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Coworkers\CoworkersController;
+use App\Http\Controllers\Coworkers\Ticket\SupportTicketController;
 use App\Http\Controllers\RolePermission\CoworkerRoleController;
 use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
@@ -32,5 +33,6 @@ Route::post('/roles/{role}/assign-permission', [RolePermissionController::class,
 Route::group(['prefix' => '/panel'], function () {
     Route::apiResource('/tickets', TicketController::class);
     Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
+    Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');
 
 })->middleware('auth:sanctum');
