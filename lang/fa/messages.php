@@ -48,6 +48,7 @@ return [
         'remind_boss_after_15_minutes' => '15 دقیقه از ایجاد تیکت گذشته است و هنوز توسط تیم پشتیبانی بررسی نشده است.'
     ],
     'tickets' => [
-        'ticket_created_successfully' => 'تیکت شما با موفقیت ساخته شد'
-    ]
+        'ticket_created_successfully' => 'تیکت شما با موفقیت ساخته شد',
+        'your_answer_submitted_successfully' => 'پاسخ شما با موفقیت ثبت شد'
+    ],
 ];
