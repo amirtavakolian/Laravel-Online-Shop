@@ -7,6 +7,7 @@ use App\Http\Controllers\RolePermission\RolePermissionController;
 use App\Http\Controllers\RolePermission\UserRoleController;
 use App\Http\Controllers\RolePermission\PermissionController;
 use App\Http\Controllers\RolePermission\RoleController;
+use App\Http\Controllers\SupportDepartments\SupportDepartmentsController;
 use App\Http\Controllers\Ticket\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ Route::group(['prefix' => '/coworkers', 'middleware' => 'auth:coworkers'], funct
     Route::post('/{coworker}/assign-role', [CoworkerRoleController::class, 'assign']);
     Route::get('/{coworker}/roles', [CoworkerRoleController::class, 'roles']);
     Route::delete('/{coworker}/roles', [CoworkerRoleController::class, 'remove']);
-
     Route::post('/addToSupportDepartments', [CoworkersController::class, 'addToSupportDepartments']);
-
 });
 
 Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');
@@ -35,4 +34,8 @@ Route::group(['prefix' => '/panel'], function () {
     Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
     Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');
 
+    Route::group(['prefix' => '/departments', 'middleware' => 'auth:coworkers'], function () {
+        Route::post('/', [SupportDepartmentsController::class, 'departments']);
+        Route::post('/{departmentId}/coworkers', [SupportDepartmentsController::class, 'departmentCoworkers']);
+    });
 })->middleware('auth:sanctum');
