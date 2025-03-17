@@ -23,4 +23,17 @@ class SupportTicketController extends Controller
         return ApiResponseFacade::setData(TicketResource::collection($tickets))->build()->response();
     }
 
+    public function show(Ticket $support_ticket)
+    {
+        $this->authorize('supportCoworkersViewAny', Ticket::class);
+
+        $message = $this->ticketService->open($support_ticket);
+        
+        if (!is_string($message)) {
+            return ApiResponseFacade::setData($support_ticket)->build()->response();
+        }
+
+        return ApiResponseFacade::setMessage($message)->build()->response();
+    }
+
 }
