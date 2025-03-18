@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->text('assign_reason');
             $table->foreign('from_coworker')->references('id')->on('coworkers');
             $table->foreign('to_coworker')->references('id')->on('coworkers');
-            $table->foreign('ticket_id')->references('id')->on('tickets');
+            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->foreign('support_department_id')->references('id')->on('support_departments');
             $table->timestamps();
         });
