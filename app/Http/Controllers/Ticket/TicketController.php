@@ -37,4 +37,12 @@ class TicketController extends Controller
             'status' => $this->ticketService->userTicketHistoryCheck($userId, $departmentId)
         ])->build()->response();
     }
+
+    public function show(Ticket $ticket)
+    {
+        $this->authorize('view', $ticket);
+
+        return ApiResponseFacade::setData(new TicketResource($ticket))->build()->response();
+    }
+
 }
