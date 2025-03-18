@@ -24,8 +24,6 @@ class TicketAnsweredNotification extends Notification
 
     public function toSms()
     {
-        return [
-            'test' => 'test'
-        ];
+        return __('messages.tickets.your_ticket_is_answered');
     }
 }

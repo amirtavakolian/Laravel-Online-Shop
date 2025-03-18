@@ -12,7 +12,8 @@ class OpenedByAssignmentHandler extends TicketHandler
         if (is_null($ticket->opened_by)) {
             $ticket->update([
                 'opened_by' => auth()->guard('coworkers')->user()->id,
-                'status' => TicketStatus::UNDER_REVIEW->value
+                'status' => TicketStatus::UNDER_REVIEW->value,
+                'is_opened' => 1
             ]);
         }
 
