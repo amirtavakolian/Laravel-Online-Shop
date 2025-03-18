@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ticket;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Ticket\StoreTicketRequest;
+use App\Http\Resources\Ticket\TicketResource;
 use App\Models\SupportDepartment;
 use App\Models\Ticket;
 use App\Models\User;
@@ -14,6 +15,13 @@ class TicketController extends Controller
 {
     public function __construct(private TicketService $ticketService)
     {
+    }
+
+    public function index()
+    {
+        $tickets = Ticket::query()->where('user_id', auth()->user()->id)->get();
+
+        return ApiResponseFacade::setData(TicketResource::collection($tickets))->build()->response();
     }
 
     public function store(StoreTicketRequest $request)
