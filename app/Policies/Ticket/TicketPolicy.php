@@ -31,4 +31,9 @@ class TicketPolicy
     {
         return $user->id == $ticket->user_id;
     }
+
+    public function destroy(User $user, Ticket $ticket): bool
+    {
+        return $user->id == $ticket->user_id;
+    }
 }

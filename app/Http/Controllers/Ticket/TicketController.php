@@ -55,4 +55,13 @@ class TicketController extends Controller
         return ApiResponseFacade::setMessage(__('messages.tickets.ticket_has_updated_successfully'))->build()->response();
     }
 
+    public function destroy(Ticket $ticket)
+    {
+        $this->authorize('destroy', $ticket);
+
+        $ticket->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.tickets.ticket_has_deleted_successfully'))->build()->response();
+    }
+
 }
