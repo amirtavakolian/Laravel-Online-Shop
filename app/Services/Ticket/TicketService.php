@@ -179,4 +179,22 @@ class TicketService
 
         return true;
     }
+
+    public function userAnswer($request, $ticket)
+    {
+        if (!is_null($ticket->closed_at)) {
+            $ticket->update(['closed_at' => null]);
+        }
+
+        $ticket->ticketAnswers()->create([
+            'content' => $request->input('content'),
+            'user_id' => auth()->user()->id
+        ]);
+
+        $ticket->update(['status' => TicketStatus::AWAITING_SUPPORT_RESPONSE->value]);
+
+        $ticket->supportDepartment->coworkers->each(function ($admin) {
+            $admin->notify(new TicketAnsweredNotification());
+        });
+    }
 }

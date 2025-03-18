@@ -62,6 +62,7 @@ return [
         'a_ticket_from_a_coworker_assigned_to_another_department' => 'یک تیکت از :from_coworker به دپارتمان :support ارجاع داده شد',
         'ticket_has_updated_successfully' => 'تیکت شما با موفقیت آپدیت شد',
         'ticket_has_deleted_successfully' => 'تیکت شما با موفقیت حذف شد',
-        'your_ticket_is_answered' => 'تیکت شما پاسخ داده شد'
+        'your_ticket_is_answered' => 'تیکت شما پاسخ داده شد',
+        'your_ticket_submited_successfully' => 'تیکت شما با موفقیت ثبت شد'
     ],
 ];

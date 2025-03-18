@@ -32,6 +32,7 @@ Route::post('/roles/{role}/assign-permission', [RolePermissionController::class,
 
 Route::group(['prefix' => '/panel'], function () {
     Route::apiResource('/tickets', TicketController::class)->middleware('auth');
+    Route::post('/tickets/{ticket}/user-answer', [TicketController::class, 'answer'])->middleware('auth');
     Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
 
     Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');

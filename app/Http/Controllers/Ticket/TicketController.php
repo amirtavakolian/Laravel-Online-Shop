@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Ticket;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Ticket\User\StoreTicketRequest;
 use App\Http\Requests\Ticket\User\UpdateTicketRequest;
+use App\Http\Requests\Ticket\User\UserTicketAnswerRequest;
 use App\Http\Resources\Ticket\TicketResource;
 use App\Models\SupportDepartment;
 use App\Models\Ticket;
@@ -62,6 +63,16 @@ class TicketController extends Controller
         $ticket->delete();
 
         return ApiResponseFacade::setMessage(__('messages.tickets.ticket_has_deleted_successfully'))->build()->response();
+    }
+
+    public function answer(UserTicketAnswerRequest $request, Ticket $ticket)
+    {
+        $this->authorize('answer', $ticket);
+
+        $this->ticketService->userAnswer($request, $ticket);
+
+        return ApiResponseFacade::setMessage(__('messages.tickets.your_ticket_submited_successfully'))->build()->response();
+
     }
 
 }
