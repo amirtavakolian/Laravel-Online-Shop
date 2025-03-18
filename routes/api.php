@@ -9,6 +9,7 @@ use App\Http\Controllers\RolePermission\PermissionController;
 use App\Http\Controllers\RolePermission\RoleController;
 use App\Http\Controllers\SupportDepartments\SupportDepartmentsController;
 use App\Http\Controllers\Ticket\TicketController;
+use App\Models\SupportDepartment;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('roles', RoleController::class)->middleware('auth:coworkers');
@@ -32,7 +33,9 @@ Route::post('/roles/{role}/assign-permission', [RolePermissionController::class,
 Route::group(['prefix' => '/panel'], function () {
     Route::apiResource('/tickets', TicketController::class);
     Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
+
     Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');
+    Route::post('support-tickets/assign', [SupportTicketController::class, 'assign'])->middleware('auth:coworkers');
 
     Route::group(['prefix' => '/departments', 'middleware' => 'auth:coworkers'], function () {
         Route::post('/', [SupportDepartmentsController::class, 'departments']);
