@@ -1,20 +1,18 @@
 <?php
 
-namespace App\Http\Requests\Ticket\Coworker;
+namespace App\Http\Requests\Ticket\User;
 
 use App\Enum\TicketStatus;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTicketRequest extends FormRequest
+class UpdateTicketRequest extends FormRequest
 {
 
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'user_id' => 'required|exists:users,id',
-            'support_department_id' => 'required|exists:support_departments,id',
+            'title' => 'required|string|min:5',
+            'content' => 'required|string|min:5',
             'priority' => 'required|in:' . implode(',', [
                     TicketStatus::URGENT->value,
                     TicketStatus::IMPORTANT->value,
@@ -23,21 +21,5 @@ class StoreTicketRequest extends FormRequest
         ];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

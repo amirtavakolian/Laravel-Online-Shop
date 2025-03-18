@@ -60,5 +60,6 @@ return [
         'ticket_succesfully_assigned_to_another_department' => 'تیکت با موفقیت به دپارتمان دیگری اختصاص داده شد',
         'ticket_belongs_to_this_department' => 'تیکت مطعلق به همین دپارتمان میباشد',
         'a_ticket_from_a_coworker_assigned_to_another_department' => 'یک تیکت از :from_coworker به دپارتمان :support ارجاع داده شد',
+        'ticket_has_updated_successfully' => 'تیکت شما با موفقیت آپدیت شد'
     ],
 ];

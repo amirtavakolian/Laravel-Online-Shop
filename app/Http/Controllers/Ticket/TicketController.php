@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Ticket;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Ticket\Coworker\StoreTicketRequest;
+use App\Http\Requests\Ticket\User\StoreTicketRequest;
+use App\Http\Requests\Ticket\User\UpdateTicketRequest;
 use App\Http\Resources\Ticket\TicketResource;
 use App\Models\SupportDepartment;
 use App\Models\Ticket;
@@ -43,6 +44,15 @@ class TicketController extends Controller
         $this->authorize('view', $ticket);
 
         return ApiResponseFacade::setData(new TicketResource($ticket))->build()->response();
+    }
+
+    public function update(UpdateTicketRequest $request, Ticket $ticket)
+    {
+        $this->authorize('update', $ticket);
+
+        $ticket->update($request->validated());
+
+        return ApiResponseFacade::setMessage(__('messages.tickets.ticket_has_updated_successfully'))->build()->response();
     }
 
 }
