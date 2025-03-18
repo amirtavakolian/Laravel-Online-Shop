@@ -35,7 +35,8 @@ Route::group(['prefix' => '/panel'], function () {
     Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
 
     Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');
-    Route::post('support-tickets/assign', [SupportTicketController::class, 'assign'])->middleware('auth:coworkers');
+    Route::post('support-tickets/coworker/assign', [SupportTicketController::class, 'assign'])->middleware('auth:coworkers');
+    Route::post('support-tickets/department/assign', [SupportTicketController::class, 'assignToDepartment'])->middleware('auth:coworkers');
 
     Route::group(['prefix' => '/departments', 'middleware' => 'auth:coworkers'], function () {
         Route::post('/', [SupportDepartmentsController::class, 'departments']);

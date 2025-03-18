@@ -52,9 +52,13 @@ return [
         'your_answer_submitted_successfully' => 'پاسخ شما با موفقیت ثبت شد',
         'you_cant_assign_the_ticket_which_you_dont_open' => 'نمیتوانید تیکتی که خودتان باز نکردین را ارجاع بدهید',
         'selected_coworker_currently_has_three_opened_tickets' => 'در حال حاضر؛ کارمند انتخاب شده؛ 3 تیکت باز دارد',
-        'ticket_succesfully_assigned_to_another_coworker' => 'تیکت با موفقیت به کارمندی دیگر اختصاص داده شد',
+        'ticket_succesfully_assigned_to_another_coworker' => 'تیکت با موفقیت به کارمندی دیگری اختصاص داده شد',
         'you_cant_assign_the_ticket_to_coworkers_of_other_departments' => 'شما نمیتوانید این تیکت را به کارمندان پشتیبانی دیگری ارسال کنید',
         'a_new_ticket_has_assigned_to_you' => 'یک تیکت جدید به شما ارجاع داده شد',
-        'a_ticket_from_a_coworker_assigned_to_another' => 'یک تیکت از :from_coworker به :to_coworker در بخش :support ارجاع داده شد'
+        'a_ticket_from_a_coworker_assigned_to_another' => 'یک تیکت از :from_coworker به :to_coworker در بخش :support ارجاع داده شد',
+        'you_cant_assign_another_department_ticket' => 'شما نمیتوانید تیکت دپارتمان دیگری را ارجاع دهید',
+        'ticket_succesfully_assigned_to_another_department' => 'تیکت با موفقیت به دپارتمان دیگری اختصاص داده شد',
+        'ticket_belongs_to_this_department' => 'تیکت مطعلق به همین دپارتمان میباشد',
+        'a_ticket_from_a_coworker_assigned_to_another_department' => 'یک تیکت از :from_coworker به دپارتمان :support ارجاع داده شد',
     ],
 ];

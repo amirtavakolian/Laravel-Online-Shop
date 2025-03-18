@@ -25,4 +25,9 @@ class Ticket extends Model
     {
         return $this->belongsTo(Coworker::class, 'opened_by');
     }
+
+    public function ticketAnswers()
+    {
+        return $this->hasMany(TicketAnswer::class, 'ticket_id');
+    }
 }

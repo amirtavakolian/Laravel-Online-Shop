@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Coworkers\Ticket;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Ticket\AssignTicketRequest;
+use App\Http\Requests\Ticket\AssignTicketToDepartmentRequest;
 use App\Http\Requests\Ticket\SupportCoworkerAnswerTicketRequest;
 use App\Http\Resources\Ticket\TicketResource;
 use App\Models\SupportDepartment;
@@ -54,6 +55,16 @@ class SupportTicketController extends Controller
         $result = $this->ticketService->assign($request);
 
         return ApiResponseFacade::setMessage(is_string($result) ? $result : __('messages.tickets.ticket_succesfully_assigned_to_another_coworker'))
+            ->build()->response();
+    }
+
+    public function assignToDepartment(AssignTicketToDepartmentRequest $request)
+    {
+        $this->authorize('supportCoworkersViewAny', Ticket::class);
+
+        $result = $this->ticketService->assignToDepartment($request);
+
+        return ApiResponseFacade::setMessage(is_string($result) ? $result : __('messages.tickets.ticket_succesfully_assigned_to_another_department'))
             ->build()->response();
     }
 

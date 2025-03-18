@@ -10,8 +10,9 @@ use App\Models\Coworker;
 use App\Models\Ticket;
 use App\Models\TicketAnswer;
 use App\Models\User;
-use App\Notifications\Ticket\AssignTicketAlertNotification;
+use App\Notifications\Ticket\AssignTicketToCoworkerAlertNotification;
 use App\Notifications\Ticket\AssignTicketNotification;
+use App\Notifications\Ticket\AssignTicketToDepartmentNotification;
 use App\Notifications\Ticket\TicketAnsweredNotification;
 use App\Services\Ticket\OpenTicketChain\OpenedByAssignmentHandler;
 use App\Services\Ticket\OpenTicketChain\OpenTicketLimitHandler;
@@ -82,7 +83,7 @@ class TicketService
 
         $toCoworker = Coworker::find($request->input('to_coworker'));
 
-        if ($ticketToAssign->opened_by != $fromCoworker->id) {
+        if (is_null($ticketToAssign->opened_by) || $ticketToAssign->opened_by != $fromCoworker->id) {
             return __('messages.tickets.you_cant_assign_the_ticket_which_you_dont_open');
         }
 
@@ -116,7 +117,52 @@ class TicketService
         $toCoworker->notify(new AssignTicketNotification($fromCoworker, $ticketToAssign));
 
         foreach ($admins as $admin) {
-            $admin->notify(new AssignTicketAlertNotification($fromCoworker, $toCoworker, $ticketToAssign));
+            $admin->notify(new AssignTicketToCoworkerAlertNotification($fromCoworker, $toCoworker, $ticketToAssign));
+        }
+
+        return true;
+    }
+
+    public function assignToDepartment($request)
+    {
+        $ticket = Ticket::find($request->input('ticket_id'));
+
+        $fromCoworker = auth()->guard('coworkers')->user();
+
+        if (!in_array($ticket->support_department_id, $fromCoworker->supportDepartments->pluck('id')->toArray())) {
+            return __('messages.tickets.you_cant_assign_another_department_ticket');
+        }
+
+        if ($ticket->support_department_id == $request->input('support_department_id')) {
+            return __('messages.tickets.ticket_belongs_to_this_department');
+        }
+
+        if (is_null($ticket->opened_by) || $ticket->opened_by != $fromCoworker->id) {
+            return __('messages.tickets.you_cant_assign_the_ticket_which_you_dont_open');
+        }
+
+        $ticket->update([
+            'is_opened' => 0,
+            'opened_by' => null,
+            'support_department_id' => $request->input('support_department_id'),
+            'status' => TicketStatus::AWAITING_SUPPORT_RESPONSE->value,
+        ]);
+
+        $ticket->ticketAnswers()->delete();
+
+        AssignTicket::query()->create([
+            'from_coworker' => $fromCoworker->id,
+            'ticket_id' => $ticket->id,
+            'support_department_id' => $request->input('support_department_id'),
+            'assign_reason' => $request->input('assign_reason')
+        ]);
+
+        $admins = Coworker::query()->whereHas('roles', function ($q) {
+            $q->where('name', Role::SUPER_ADMIN->value);
+        })->get();
+
+        foreach ($admins as $admin) {
+            $admin->notify(new AssignTicketToDepartmentNotification($ticket->supportDepartment, $fromCoworker));
         }
 
         return true;

@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AssignTicketAlertNotification extends Notification
+class AssignTicketToCoworkerAlertNotification extends Notification
 {
     use Queueable;
 
