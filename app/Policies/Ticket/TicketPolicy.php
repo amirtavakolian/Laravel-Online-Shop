@@ -41,4 +41,9 @@ class TicketPolicy
     {
         return $user->id == $ticket->user_id;
     }
+
+    public function close(User $user, Ticket $ticket)
+    {
+        return $user->id == $ticket->user_id;
+    }
 }

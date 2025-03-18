@@ -31,9 +31,12 @@ Route::group(['prefix' => '/coworkers', 'middleware' => 'auth:coworkers'], funct
 Route::post('/roles/{role}/assign-permission', [RolePermissionController::class, 'assignPermissionToRole'])->middleware('auth:sanctum');
 
 Route::group(['prefix' => '/panel'], function () {
-    Route::apiResource('/tickets', TicketController::class)->middleware('auth');
-    Route::post('/tickets/{ticket}/user-answer', [TicketController::class, 'answer'])->middleware('auth');
-    Route::post('/tickets/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
+    Route::group(['prefix' => '/tickets'], function () {
+        Route::apiResource('/', TicketController::class)->middleware('auth');
+        Route::post('/{ticket}/user-answer', [TicketController::class, 'answer'])->middleware('auth');
+        Route::post('/{ticket}/close', [TicketController::class, 'close'])->middleware('auth');
+        Route::post('/exists/{userId}/{departmentId}', [TicketController::class, 'userTicketHistoryCheck']);
+    });
 
     Route::apiResource('support-tickets', SupportTicketController::class)->middleware('auth:coworkers');
     Route::post('support-tickets/coworker/assign', [SupportTicketController::class, 'assign'])->middleware('auth:coworkers');

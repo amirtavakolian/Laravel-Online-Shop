@@ -63,6 +63,8 @@ return [
         'ticket_has_updated_successfully' => 'تیکت شما با موفقیت آپدیت شد',
         'ticket_has_deleted_successfully' => 'تیکت شما با موفقیت حذف شد',
         'your_ticket_is_answered' => 'تیکت شما پاسخ داده شد',
-        'your_ticket_submited_successfully' => 'تیکت شما با موفقیت ثبت شد'
+        'your_ticket_submited_successfully' => 'تیکت شما با موفقیت ثبت شد',
+        'ticket_closed_successfully' => 'تیکت با موفقیت بسته شد',
+        'ticket_is_closed' => 'تیکت قبلا بسته شده است'
     ],
 ];
