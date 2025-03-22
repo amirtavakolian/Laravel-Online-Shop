@@ -26,7 +26,7 @@ class OtpAuthController extends Controller
             OtpAuthService::OTP_CODE_IS_SENT => __('messages.auth.' . OtpAuthService::OTP_CODE_IS_SENT),
         };
 
-        return ApiResponseFacade::setMessage(__($message))->setData([])->build()->response();
+        return ApiResponseFacade::setMessage(__($message))->build()->response();
     }
 
     public function verify(Request $request)

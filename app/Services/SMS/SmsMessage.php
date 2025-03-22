@@ -4,8 +4,8 @@ namespace App\Services\SMS;
 
 class SmsMessage
 {
-    public $receptor;
-    public $message;
+    private $receptor;
+    private $message;
 
     public function setReceptor(string $receptor)
     {
