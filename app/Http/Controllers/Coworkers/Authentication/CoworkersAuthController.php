@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\Coworkers\RegisterCoworkersRequest;
 use App\Models\Coworker;
 use App\Services\ApiResponse\ApiResponseFacade;
-use App\Services\Authentication\OtpAuthService;
+use Authentication\Services\OtpAuthService;
 use Illuminate\Http\Request;
 
 class CoworkersAuthController extends Controller

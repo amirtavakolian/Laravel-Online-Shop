@@ -5,8 +5,8 @@ namespace App\Http\Controllers\RolePermission;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RolePermission\AssignRoleRequest;
 use App\Http\Requests\RolePermission\RemoveUserRolesRequest;
-use App\Models\User;
 use App\Services\ApiResponse\ApiResponseFacade;
+use Authentication\Models\User;
 use Spatie\Permission\Models\Role;
 
 class UserRoleController extends Controller
@@ -30,7 +30,7 @@ class UserRoleController extends Controller
     public function remove(RemoveUserRolesRequest $request, User $user)
     {
         $this->authorize('removeRole', Role::class);
-        
+
         foreach ($request->validated('roles') as $role) {
             $user->removeRole($role);
         }

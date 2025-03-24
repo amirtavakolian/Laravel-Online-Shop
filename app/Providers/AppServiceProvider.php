@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Enum\Authentication;
-use App\Listeners\Ticket\NewTicketListener;
 use App\Models\Coworker;
 use App\Models\Ticket;
 use App\Policies\Coworkers\CoworkersPolicy;
@@ -11,11 +9,11 @@ use App\Policies\RolePermission\RolePolicy;
 use App\Policies\Ticket\Support\SupportTicketPolicy;
 use App\Policies\Ticket\TicketPolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
-use App\Services\Authentication\TwoAuth\CallTwoAuth;
-use App\Services\Authentication\TwoAuth\EmailTwoAuth;
-use App\Services\Authentication\TwoAuth\SmsTwoAuth;
-use App\Services\Authentication\TwoAuth\TwoAuth;
-use Illuminate\Support\Facades\Event;
+use Authentication\Enum\Authentication;
+use Authentication\Services\TwoAuth\CallTwoAuth;
+use Authentication\Services\TwoAuth\EmailTwoAuth;
+use Authentication\Services\TwoAuth\SmsTwoAuth;
+use Authentication\Services\TwoAuth\TwoAuth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Permission\Models\Role;

@@ -9,14 +9,14 @@ use App\Models\AssignTicket;
 use App\Models\Coworker;
 use App\Models\Ticket;
 use App\Models\TicketAnswer;
-use App\Models\User;
-use App\Notifications\Ticket\AssignTicketToCoworkerAlertNotification;
 use App\Notifications\Ticket\AssignTicketNotification;
+use App\Notifications\Ticket\AssignTicketToCoworkerAlertNotification;
 use App\Notifications\Ticket\AssignTicketToDepartmentNotification;
 use App\Notifications\Ticket\TicketAnsweredNotification;
 use App\Services\Ticket\OpenTicketChain\OpenedByAssignmentHandler;
 use App\Services\Ticket\OpenTicketChain\OpenTicketLimitHandler;
 use App\Services\Ticket\OpenTicketChain\TicketOwnershipValidationHandler;
+use Authentication\Models\User;
 use Exception;
 
 class TicketService
