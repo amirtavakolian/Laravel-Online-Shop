@@ -2,9 +2,7 @@
 
 namespace App\Jobs\Ticket;
 
-use App\Enum\RolePermission\Role;
 use App\Models\Coworker;
-use App\Models\SupportDepartment;
 use App\Services\SMS\KavenegarService;
 use App\Services\SMS\SmsMessage;
 use Illuminate\Bus\Queueable;
@@ -12,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Role;
 
 class NewTicketReceivedBossReminderJob implements ShouldQueue
 {

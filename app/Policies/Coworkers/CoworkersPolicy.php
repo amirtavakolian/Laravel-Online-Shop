@@ -2,8 +2,8 @@
 
 namespace App\Policies\Coworkers;
 
-use App\Enum\RolePermission\Role;
 use App\Models\coworker;
+use Role;
 
 class CoworkersPolicy
 {

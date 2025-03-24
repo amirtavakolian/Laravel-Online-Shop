@@ -1,13 +1,12 @@
 <?php
-
-namespace App\Http\Controllers\RolePermission;
+namespace RolePermission\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RolePermission\StorePermissionsRequest;
-use App\Http\Requests\RolePermission\UpdatePermissionRequest;
 use App\Http\Resources\RolePermission\PermissionResource;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Illuminate\Http\Request;
+use RolePermission\App\Http\Requests\StorePermissionsRequest;
+use RolePermission\App\Http\Requests\UpdatePermissionRequest;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 

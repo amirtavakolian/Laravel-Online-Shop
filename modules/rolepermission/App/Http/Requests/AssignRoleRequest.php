@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\RolePermission;
+namespace RolePermission\App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PermissionsRequest extends FormRequest
+class AssignRoleRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +15,8 @@ class PermissionsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'permissions' => 'required|array',
-            'permissions.*' => 'exists:permissions,name'
+            "roles" => "required|array",
+            "roles.*" => "exists:roles,name"
         ];
     }
 }

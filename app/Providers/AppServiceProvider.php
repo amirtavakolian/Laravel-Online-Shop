@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Models\Coworker;
 use App\Models\Ticket;
 use App\Policies\Coworkers\CoworkersPolicy;
-use App\Policies\RolePermission\RolePolicy;
 use App\Policies\Ticket\Support\SupportTicketPolicy;
 use App\Policies\Ticket\TicketPolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
@@ -16,6 +15,7 @@ use Authentication\Services\TwoAuth\SmsTwoAuth;
 use Authentication\Services\TwoAuth\TwoAuth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use RolePermission\App\Policies\RolePolicy;
 use Spatie\Permission\Models\Role;
 
 class AppServiceProvider extends ServiceProvider

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Requests\RolePermission;
+namespace RolePermission\App\Http\Requests;
 
-use App\Rules\RolePermission\PermissionExist;
 use Illuminate\Foundation\Http\FormRequest;
+use RolePermission\App\Rules\PermissionExist;
 
 class StorePermissionsRequest extends FormRequest
 {

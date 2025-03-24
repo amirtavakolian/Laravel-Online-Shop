@@ -1,9 +1,9 @@
 <?php
+namespace RolePermission\App\Policies;
 
-namespace App\Policies\RolePermission;
 
-use App\Enum\RolePermission\Role;
 use App\Models\Coworker;
+use RolePermission\Enum\Role;
 
 class RolePolicy
 {

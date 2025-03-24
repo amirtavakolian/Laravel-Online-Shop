@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Rules\RolePermission;
+namespace RolePermission\App\Rules;
 
-use App\Http\Requests\RolePermission\StoreRolesRequest;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
+use RolePermission\App\Http\Requests\StoreRolesRequest;
 use Spatie\Permission\Models\Role;
 
 class RoleExist implements ValidationRule

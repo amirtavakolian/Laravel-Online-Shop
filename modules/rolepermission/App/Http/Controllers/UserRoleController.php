@@ -1,12 +1,11 @@
 <?php
-
-namespace App\Http\Controllers\RolePermission;
+namespace RolePermission\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RolePermission\AssignRoleRequest;
-use App\Http\Requests\RolePermission\RemoveUserRolesRequest;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Authentication\Models\User;
+use RolePermission\App\Http\Requests\AssignRoleRequest;
+use RolePermission\App\Http\Requests\RemoveUserRolesRequest;
 use Spatie\Permission\Models\Role;
 
 class UserRoleController extends Controller
@@ -14,6 +13,7 @@ class UserRoleController extends Controller
 
     public function assign(AssignRoleRequest $request, User $user)
     {
+        dd(5);
         $this->authorize('assignRole', Role::class);
 
         $user->syncRoles($request->validated('roles'));

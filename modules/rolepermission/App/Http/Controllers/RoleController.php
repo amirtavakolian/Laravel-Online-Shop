@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\RolePermission;
+namespace RolePermission\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RolePermission\StoreRolesRequest;
-use App\Http\Requests\RolePermission\UpdateRoleRequest;
 use App\Http\Resources\RolePermission\RoleResource;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Illuminate\Support\Arr;
+use RolePermission\App\Http\Requests\StoreRolesRequest;
+use RolePermission\App\Http\Requests\UpdateRoleRequest;
 use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller

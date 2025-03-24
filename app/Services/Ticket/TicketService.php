@@ -2,7 +2,6 @@
 
 namespace App\Services\Ticket;
 
-use App\Enum\RolePermission\Role;
 use App\Enum\TicketStatus;
 use App\Events\Ticket\NewTicketReceived;
 use App\Models\AssignTicket;
@@ -18,6 +17,7 @@ use App\Services\Ticket\OpenTicketChain\OpenTicketLimitHandler;
 use App\Services\Ticket\OpenTicketChain\TicketOwnershipValidationHandler;
 use Authentication\Models\User;
 use Exception;
+use Role;
 
 class TicketService
 {

@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         \Authentication\providers\AuthenticationServiceProvider::class,
+        \RolePermission\App\Providers\RolePermissionServiceProvider::class,
+
     ])->toArray(),
 
     /*

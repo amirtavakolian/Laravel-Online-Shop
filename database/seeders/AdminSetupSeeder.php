@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Coworker;
-use Exception;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -35,7 +33,7 @@ class AdminSetupSeeder extends Seeder
 
         if (!Role::query()->where('name', 'admin')->exists()) {
             Role::create([
-                'name' => \App\Enum\RolePermission\Role::SUPER_ADMIN->value,
+                'name' => \Role::SUPER_ADMIN->value,
                 'guard_name' => 'coworkers'
             ]);
         }
