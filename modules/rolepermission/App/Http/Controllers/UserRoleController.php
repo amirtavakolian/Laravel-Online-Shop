@@ -3,7 +3,7 @@ namespace RolePermission\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Services\ApiResponse\ApiResponseFacade;
-use Authentication\Models\User;
+use Authentication\App\Models\User;
 use RolePermission\App\Http\Requests\AssignRoleRequest;
 use RolePermission\App\Http\Requests\RemoveUserRolesRequest;
 use Spatie\Permission\Models\Role;

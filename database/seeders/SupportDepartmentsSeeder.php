@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\SupportDepartment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Coworkers\App\Models\SupportDepartment;
 use Illuminate\Database\Seeder;
-use Predis\Command\Traits\DB;
 
 class SupportDepartmentsSeeder extends Seeder
 {

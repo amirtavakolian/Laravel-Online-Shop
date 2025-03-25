@@ -8,11 +8,11 @@ use App\Http\Requests\Ticket\User\UpdateTicketRequest;
 use App\Http\Requests\Ticket\User\UserCloseTicketRequest;
 use App\Http\Requests\Ticket\User\UserTicketAnswerRequest;
 use App\Http\Resources\Ticket\TicketResource;
-use App\Models\SupportDepartment;
 use App\Models\Ticket;
 use App\Services\ApiResponse\ApiResponseFacade;
 use App\Services\Ticket\TicketService;
-use Authentication\Models\User;
+use Authentication\App\Models\User;
+use Coworkers\App\Models\SupportDepartment;
 
 class TicketController extends Controller
 {

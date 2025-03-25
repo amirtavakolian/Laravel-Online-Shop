@@ -2,9 +2,9 @@
 
 namespace App\Rules\Ticket;
 
-use App\Models\Coworker;
 use App\Models\Ticket;
 use Closure;
+use Coworkers\App\Models\Coworker;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Translation\PotentiallyTranslatedString;
 

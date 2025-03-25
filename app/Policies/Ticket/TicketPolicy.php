@@ -2,10 +2,10 @@
 
 namespace App\Policies\Ticket;
 
-use App\Models\Coworker;
 use App\Models\Ticket;
-use Authentication\Models\User;
-use Role;
+use Authentication\App\Models\User;
+use Coworkers\App\Models\Coworker;
+use RolePermission\Enum\Role;
 
 class TicketPolicy
 {

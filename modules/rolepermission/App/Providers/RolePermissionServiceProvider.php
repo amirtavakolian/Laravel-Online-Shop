@@ -12,9 +12,9 @@ class RolePermissionServiceProvider extends ServiceProvider
             ->prefix('api')
             ->group(__DIR__ . '/../../routes/roleperm_routes.php');
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');
 
-        $this->loadFactoriesFrom(__DIR__ . '/../Database/Factories');
+        $this->loadFactoriesFrom(__DIR__ . '/../../Database/Factories');
     }
 
     public function boot()

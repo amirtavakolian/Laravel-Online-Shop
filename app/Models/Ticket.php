@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-use Authentication\Models\User;
+use Authentication\App\Models\User;
+use Coworkers\App\Models\Coworker;
+use Coworkers\App\Models\SupportDepartment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -168,8 +168,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \Authentication\providers\AuthenticationServiceProvider::class,
+        \Authentication\App\Providers\AuthenticationServiceProvider::class,
         \RolePermission\App\Providers\RolePermissionServiceProvider::class,
+        \Coworkers\App\Providers\CoworkersServiceProvider::class,
 
     ])->toArray(),
 

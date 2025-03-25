@@ -2,7 +2,7 @@
 namespace RolePermission\App\Policies;
 
 
-use App\Models\Coworker;
+use Coworkers\App\Models\Coworker;
 use RolePermission\Enum\Role;
 
 class RolePolicy

@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Coworkers\Authentication\CoworkersAuthController;
-use Authentication\Http\Controllers\EmailRegistrationController;
-use Authentication\Http\Controllers\ForgetPasswordController;
-use Authentication\Http\Controllers\LinkAuthController;
-use Authentication\Http\Controllers\OtpAuthController;
-use Authentication\Http\Controllers\PasswordController;
-use Authentication\Http\Controllers\TwoAuthController;
-use Authentication\Http\Controllers\VerificationController;
+use Authentication\App\Http\Controllers\EmailRegistrationController;
+use Authentication\App\Http\Controllers\ForgetPasswordController;
+use Authentication\App\Http\Controllers\LinkAuthController;
+use Authentication\App\Http\Controllers\OtpAuthController;
+use Authentication\App\Http\Controllers\PasswordController;
+use Authentication\App\Http\Controllers\TwoAuthController;
+use Authentication\App\Http\Controllers\VerificationController;
+use Coworkers\App\Http\Controllers\CoworkersAuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/otp'], function () {
@@ -38,10 +38,4 @@ Route::group(['prefix' => '/auth'], function () {
 Route::group(['prefix' => '/twoauth', 'middleware' => 'auth:sanctum'], function () {
     Route::post('/generate-code', [TwoAuthController::class, 'generate']);
     Route::post('/verify-code', [TwoAuthController::class, 'verify']);
-});
-
-Route::group(['prefix' => '/auth/coworkers'], function () {
-    Route::post('/register', [CoworkersAuthController::class, 'register']);
-    Route::post('/login', [CoworkersAuthController::class, 'login'])->middleware(['throttle:3,1']);
-    Route::post('/verify', [CoworkersAuthController::class, 'verify']);
 });

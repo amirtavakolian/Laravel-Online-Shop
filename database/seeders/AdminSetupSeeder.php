@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Coworker;
+use Coworkers\App\Models\Coworker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;

@@ -2,9 +2,9 @@
 namespace RolePermission\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\RolePermission\PermissionResource;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Illuminate\Http\Request;
+use RolePermission\App\Http\Requests\PermissionResource;
 use RolePermission\App\Http\Requests\StorePermissionsRequest;
 use RolePermission\App\Http\Requests\UpdatePermissionRequest;
 use Spatie\Permission\Models\Permission;

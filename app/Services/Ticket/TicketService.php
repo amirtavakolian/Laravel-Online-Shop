@@ -4,8 +4,6 @@ namespace App\Services\Ticket;
 
 use App\Enum\TicketStatus;
 use App\Events\Ticket\NewTicketReceived;
-use App\Models\AssignTicket;
-use App\Models\Coworker;
 use App\Models\Ticket;
 use App\Models\TicketAnswer;
 use App\Notifications\Ticket\AssignTicketNotification;
@@ -15,9 +13,11 @@ use App\Notifications\Ticket\TicketAnsweredNotification;
 use App\Services\Ticket\OpenTicketChain\OpenedByAssignmentHandler;
 use App\Services\Ticket\OpenTicketChain\OpenTicketLimitHandler;
 use App\Services\Ticket\OpenTicketChain\TicketOwnershipValidationHandler;
-use Authentication\Models\User;
+use Authentication\App\Models\User;
+use Coworkers\App\Models\AssignTicket;
+use Coworkers\App\Models\Coworker;
 use Exception;
-use Role;
+use RolePermission\Enum\Role;
 
 class TicketService
 {
@@ -70,9 +70,17 @@ class TicketService
 
     public function all()
     {
-        return Ticket::query()->whereIn('support_department_id',
-            auth()->guard('coworkers')->user()->supportDepartments->pluck('id')->toArray())
-            ->whereNull('closed_at')->get();
+        $currentUser = auth()->guard('coworkers')->user();
+
+        $tickets = Ticket::query()->where(function ($q) use ($currentUser) {
+            if ($currentUser->hasRole(Role::SUPER_ADMIN->value)) {
+                return $q;
+            }
+            return $q->whereIn('support_department_id',
+                $currentUser->supportDepartments->pluck('id')->toArray());
+        });
+
+        return $tickets->whereNull('closed_at')->get();
     }
 
     public function assign($request)

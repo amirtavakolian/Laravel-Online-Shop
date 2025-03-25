@@ -31,7 +31,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Authentication\\": "modules/authentication",
-            "RolePermission\\": "modules/rolepermission"
+            "RolePermission\\": "modules/rolepermission",
+            "Coworkers\\": "modules/coworkers"
         }
     },
     "autoload-dev": {

@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Services\ApiResponse\ApiResponseFacade;
-use Authentication\Enum\Authentication;
+use Authentication\App\Enum\Authentication;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;

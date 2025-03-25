@@ -2,9 +2,9 @@
 
 namespace App\Jobs\Ticket;
 
-use App\Models\Coworker;
 use App\Services\SMS\KavenegarService;
 use App\Services\SMS\SmsMessage;
+use Coworkers\App\Models\Coworker;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
