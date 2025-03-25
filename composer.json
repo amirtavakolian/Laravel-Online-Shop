@@ -32,7 +32,8 @@
             "Database\\Seeders\\": "database/seeders/",
             "Authentication\\": "modules/authentication",
             "RolePermission\\": "modules/rolepermission",
-            "Coworkers\\": "modules/coworkers"
+            "Coworkers\\": "modules/coworkers",
+            "Tickets\\": "modules/tickets"
         }
     },
     "autoload-dev": {

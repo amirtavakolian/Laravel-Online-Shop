@@ -171,6 +171,7 @@ return [
         \Authentication\App\Providers\AuthenticationServiceProvider::class,
         \RolePermission\App\Providers\RolePermissionServiceProvider::class,
         \Coworkers\App\Providers\CoworkersServiceProvider::class,
+        \Tickets\App\Providers\TicketsServiceProvider::class
 
     ])->toArray(),
 

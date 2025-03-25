@@ -3,13 +3,13 @@
 namespace Coworkers\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Ticket\TicketResource;
-use App\Models\Ticket;
 use App\Services\ApiResponse\ApiResponseFacade;
-use App\Services\Ticket\TicketService;
 use Coworkers\App\Http\Requests\AssignTicketRequest;
 use Coworkers\App\Http\Requests\AssignTicketToDepartmentRequest;
 use Coworkers\App\Http\Requests\SupportCoworkerAnswerTicketRequest;
+use Tickets\App\Http\Resources\TicketResource;
+use Tickets\App\Models\Ticket;
+use Tickets\App\Services\TicketService;
 
 class SupportTicketController extends Controller
 {

@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Ticket;
 use App\Policies\Ticket\Support\SupportTicketPolicy;
-use App\Policies\Ticket\TicketPolicy;
 use App\Services\ApiResponse\ApiResponseBuilder;
 use Authentication\App\Enum\Authentication;
 use Authentication\App\Services\TwoAuth\CallTwoAuth;
@@ -17,6 +15,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use RolePermission\App\Policies\RolePolicy;
 use Spatie\Permission\Models\Role;
+use Tickets\App\Models\Ticket;
+use Tickets\App\Policies\TicketPolicy;
 
 class AppServiceProvider extends ServiceProvider
 {

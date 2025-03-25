@@ -2,10 +2,10 @@
 
 namespace Coworkers\App\Http\Requests;
 
-use App\Rules\Ticket\IsTicketClosedRule;
-use App\Rules\Ticket\IsTicketOpenedRule;
-use App\Rules\Ticket\TicketBelongsToDepartmentRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Tickets\App\Rules\IsTicketClosedRule;
+use Tickets\App\Rules\IsTicketOpenedRule;
+use Tickets\App\Rules\TicketBelongsToDepartmentRule;
 
 class SupportCoworkerAnswerTicketRequest extends FormRequest
 {
