@@ -72,4 +72,7 @@ return [
         'brand_successfully_updated' => 'برند با موفقیت آپدیت شد',
         'brand_successfully_deleted' => 'برند با موفقیت حذف شد'
     ],
+    'attributes' => [
+        'attribute_successfully_created' => 'ویژگی با موفقیت ساخته شد',
+    ],
 ];
