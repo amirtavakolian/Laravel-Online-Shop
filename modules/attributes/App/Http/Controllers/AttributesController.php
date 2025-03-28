@@ -21,6 +21,8 @@ class AttributesController extends Controller
 
     public function store(StoreAttributeRequest $request)
     {
+        $this->authorize('isSuperAdmin', Attribute::class);
+
         Attribute::query()->create($request->validated());
 
         return ApiResponseFacade::setMessage(__('messages.attributes.attribute_successfully_created'))->build()->response();
@@ -28,6 +30,8 @@ class AttributesController extends Controller
 
     public function update(Attribute $attribute, UpdateAttributeRequest $request)
     {
+        $this->authorize('isSuperAdmin', Attribute::class);
+
         $attribute->update($request->validated());
 
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_updated'))
@@ -36,6 +40,8 @@ class AttributesController extends Controller
 
     public function destroy(Attribute $attribute)
     {
+        $this->authorize('isSuperAdmin', Attribute::class);
+
         $attribute->delete();
 
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_deleted'))->build()->response();
