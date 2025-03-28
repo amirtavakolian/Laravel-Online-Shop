@@ -173,6 +173,7 @@ return [
         \Coworkers\App\Providers\CoworkersServiceProvider::class,
         \Tickets\App\Providers\TicketsServiceProvider::class,
         \Brands\App\Providers\BrandsServiceProvider::class,
+        \Attributes\App\Providers\AttributesServiceProvider::class
 
     ])->toArray(),
 

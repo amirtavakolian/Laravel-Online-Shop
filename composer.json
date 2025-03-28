@@ -37,7 +37,8 @@
             "RolePermission\\": "modules/rolepermission",
             "Coworkers\\": "modules/coworkers",
             "Tickets\\": "modules/tickets",
-            "Brands\\": "modules/brands"
+            "Brands\\": "modules/brands",
+            "Attributes\\": "modules/attributes"
         }
     },
     "autoload-dev": {
