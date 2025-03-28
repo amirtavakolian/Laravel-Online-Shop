@@ -6,10 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Services\ApiResponse\ApiResponseFacade;
 use Attributes\App\Http\Resources\AttributeResources;
 use Attributes\App\Models\Attribute;
-use Brands\App\Http\Resources\BrandsResource;
 
 class AttributesController extends Controller
 {
 
+    public function index()
+    {
+        $attributes = Attribute::all();
 
+        return ApiResponseFacade::setData(AttributeResources::collection($attributes))->build()->response();
+    }
 }
