@@ -67,4 +67,7 @@ return [
         'ticket_closed_successfully' => 'تیکت با موفقیت بسته شد',
         'ticket_is_closed' => 'تیکت قبلا بسته شده است'
     ],
+    'brands' => [
+        'brand_successfully_created' => 'برند با موفقیت ساخته شد',
+    ],
 ];
