@@ -33,4 +33,11 @@ class BrandsController extends Controller
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_updated'))
             ->build()->response();
     }
+
+    public function destroy(Brand $brand)
+    {
+        $brand->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_deleted'))->build()->response();
+    }
 }

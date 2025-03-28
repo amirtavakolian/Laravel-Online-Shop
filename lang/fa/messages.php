@@ -69,7 +69,7 @@ return [
     ],
     'brands' => [
         'brand_successfully_created' => 'برند با موفقیت ساخته شد',
-        'brand_successfully_updated' => 'برند با موفقیت ساخته شد'
         'brand_successfully_updated' => 'برند با موفقیت آپدیت شد',
+        'brand_successfully_deleted' => 'برند با موفقیت حذف شد'
     ],
 ];
