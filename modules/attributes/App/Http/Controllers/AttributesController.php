@@ -33,4 +33,11 @@ class AttributesController extends Controller
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_updated'))
             ->build()->response();
     }
+
+    public function destroy(Attribute $attribute)
+    {
+        $attribute->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_deleted'))->build()->response();
+    }
 }

@@ -75,5 +75,6 @@ return [
     'attributes' => [
         'attribute_successfully_created' => 'ویژگی با موفقیت ساخته شد',
         'attribute_successfully_updated' => 'ویژگی با موفقیت آپدیت شد',
+        'attribute_successfully_deleted' => 'ویژگی با موفقیت حذف شد'
     ],
 ];
