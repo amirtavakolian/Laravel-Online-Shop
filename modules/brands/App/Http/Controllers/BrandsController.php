@@ -21,6 +21,8 @@ class BrandsController extends Controller
 
     public function store(StoreBrandRequest $request)
     {
+        $this->authorize('isSuperAdmin', Brand::class);
+
         Brand::query()->create($request->validated());
 
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_created'))->build()->response();
@@ -28,6 +30,8 @@ class BrandsController extends Controller
 
     public function update(Brand $brand, UpdateBrandRequest $request)
     {
+        $this->authorize('isSuperAdmin', Brand::class);
+
         $brand->update($request->validated());
 
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_updated'))
@@ -36,6 +40,8 @@ class BrandsController extends Controller
 
     public function destroy(Brand $brand)
     {
+        $this->authorize('isSuperAdmin', Brand::class);
+
         $brand->delete();
 
         return ApiResponseFacade::setMessage(__('messages.brands.brand_successfully_deleted'))->build()->response();
