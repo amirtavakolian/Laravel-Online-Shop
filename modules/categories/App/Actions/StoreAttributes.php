@@ -20,6 +20,8 @@ class StoreAttributes
             'is_variation' => 1
         ]);
 
+        $category->attributes()->detach();
+
         $category->attributes()->sync($categoryAttributes);
     }
 }

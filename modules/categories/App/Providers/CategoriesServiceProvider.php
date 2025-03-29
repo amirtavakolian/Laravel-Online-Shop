@@ -10,9 +10,8 @@ class CategoriesServiceProvider extends ServiceProvider
 
     public function register()
     {
-        Route::middleware('api')
+        Route::middleware(['api', 'auth:coworkers'])
             ->prefix('api/panel/')
-            ->middleware('auth:coworkers')
             ->group(__DIR__ . '/../../routes/category_routes.php');
 
         $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');

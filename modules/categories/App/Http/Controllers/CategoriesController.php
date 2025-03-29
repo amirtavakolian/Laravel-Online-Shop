@@ -7,19 +7,19 @@ use App\Services\ApiResponse\ApiResponseFacade;
 use Attributes\App\Models\Attribute;
 use Categories\App\Actions\StoreAttributes;
 use Categories\App\Actions\StoreCategory;
-use Categories\App\Actions\StoreOrUpdateAttributes;
-use Categories\App\Actions\StoreOrUpdateCategory;
+use Categories\App\Actions\UpdateCategory;
 use Categories\App\Http\Requests\StoreCategoryRequest;
+use Categories\App\Http\Requests\UpdateCategoryRequest;
 use Categories\App\Http\Resources\AttributesResource;
 use Categories\App\Http\Resources\CategoriesResource;
 use Categories\App\Models\Category;
 
 class CategoriesController extends Controller
 {
-
     public function __construct(
         private StoreCategory  $storeCategory,
-        private StoreAttributes $storeAttributes
+        private StoreAttributes $storeAttributes,
+        private UpdateCategory $updateCategory
     )
     {
     }
@@ -41,6 +41,12 @@ class CategoriesController extends Controller
         return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_created'))
             ->build()->response();
     }
+
+    public function update(Category $category, UpdateCategoryRequest $request)
+    {
+        ($this->updateCategory)($category, $request);
+
+        ($this->storeAttributes)($request, $category);
 
         return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_created'))
             ->build()->response();

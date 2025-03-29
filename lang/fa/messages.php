@@ -79,5 +79,6 @@ return [
     ],
     'categories' => [
         'category_successfully_created' => 'دسته بندی با موفقیت ساخته شد',
+        'category_successfully_updated' => 'دسته بندی با موفقیت آپدیت شد',
     ],
 ];
