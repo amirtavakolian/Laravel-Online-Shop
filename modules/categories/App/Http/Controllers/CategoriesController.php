@@ -51,6 +51,14 @@ class CategoriesController extends Controller
         return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_created'))
             ->build()->response();
     }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_deleted'))
+            ->build()->response();
+    }
 }
 
 
