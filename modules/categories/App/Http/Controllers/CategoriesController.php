@@ -17,9 +17,9 @@ use Categories\App\Models\Category;
 class CategoriesController extends Controller
 {
     public function __construct(
-        private StoreCategory  $storeCategory,
+        private StoreCategory   $storeCategory,
         private StoreAttributes $storeAttributes,
-        private UpdateCategory $updateCategory
+        private UpdateCategory  $updateCategory
     )
     {
     }
@@ -34,6 +34,8 @@ class CategoriesController extends Controller
 
     public function store(StoreCategoryRequest $request)
     {
+        $this->authorize('isSuperAdmin', Category::class);
+            
         $newCategory = ($this->storeCategory)($request);
 
         ($this->storeAttributes)($request, $newCategory);
@@ -44,6 +46,8 @@ class CategoriesController extends Controller
 
     public function update(Category $category, UpdateCategoryRequest $request)
     {
+        $this->authorize('isSuperAdmin', Category::class);
+    
         ($this->updateCategory)($category, $request);
 
         ($this->storeAttributes)($request, $category);
@@ -54,6 +58,8 @@ class CategoriesController extends Controller
 
     public function destroy(Category $category)
     {
+        $this->authorize('isSuperAdmin', Category::class);
+
         $category->delete();
 
         return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_deleted'))
