@@ -35,7 +35,7 @@ class CategoriesController extends Controller
     public function store(StoreCategoryRequest $request)
     {
         $this->authorize('isSuperAdmin', Category::class);
-            
+
         $newCategory = ($this->storeCategory)($request);
 
         ($this->storeAttributes)($request, $newCategory);
@@ -47,7 +47,7 @@ class CategoriesController extends Controller
     public function update(Category $category, UpdateCategoryRequest $request)
     {
         $this->authorize('isSuperAdmin', Category::class);
-    
+
         ($this->updateCategory)($category, $request);
 
         ($this->storeAttributes)($request, $category);

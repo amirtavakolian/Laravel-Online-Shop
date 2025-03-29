@@ -2,8 +2,12 @@
 
 namespace RolePermission\App\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use RolePermission\App\Policies\RolePolicy;
+use Spatie\Permission\Models\Role;
+
 class RolePermissionServiceProvider extends ServiceProvider
 {
     public function register()
@@ -15,6 +19,9 @@ class RolePermissionServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');
 
         $this->loadFactoriesFrom(__DIR__ . '/../../Database/Factories');
+
+        Gate::policy(Role::class, RolePolicy::class);
+
     }
 
     public function boot()

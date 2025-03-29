@@ -2,6 +2,9 @@
 
 namespace Coworkers\App\Providers;
 
+use Coworkers\App\Models\Coworker;
+use Coworkers\App\Policies\CoworkersPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +20,8 @@ class CoworkersServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__ . '/../../Database/Migrations');
 
         $this->loadFactoriesFrom(__DIR__ . '/../Database/Factories');
+
+        Gate::policy(Coworker::class, CoworkersPolicy::class);
     }
 
     public function boot()
