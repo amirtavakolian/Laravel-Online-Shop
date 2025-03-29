@@ -77,4 +77,7 @@ return [
         'attribute_successfully_updated' => 'ویژگی با موفقیت آپدیت شد',
         'attribute_successfully_deleted' => 'ویژگی با موفقیت حذف شد'
     ],
+    'categories' => [
+        'category_successfully_created' => 'دسته بندی با موفقیت ساخته شد',
+    ],
 ];
