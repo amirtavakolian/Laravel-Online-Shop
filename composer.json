@@ -38,7 +38,8 @@
             "Coworkers\\": "modules/coworkers",
             "Tickets\\": "modules/tickets",
             "Brands\\": "modules/brands",
-            "Attributes\\": "modules/attributes"
+            "Attributes\\": "modules/attributes",
+            "Categories\\": "modules/categories"
         }
     },
     "autoload-dev": {
