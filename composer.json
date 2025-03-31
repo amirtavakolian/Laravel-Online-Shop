@@ -39,7 +39,8 @@
             "Tickets\\": "modules/tickets",
             "Brands\\": "modules/brands",
             "Attributes\\": "modules/attributes",
-            "Categories\\": "modules/categories"
+            "Categories\\": "modules/categories",
+            "Tags\\": "modules/tags"
         }
     },
     "autoload-dev": {

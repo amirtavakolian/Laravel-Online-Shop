@@ -82,4 +82,9 @@ return [
         'category_successfully_updated' => 'دسته بندی با موفقیت آپدیت شد',
         'category_successfully_deleted' => 'دسته بندی با موفقیت آپدیت شد',
     ],
+    'tags' => [
+        'tag_successfully_created' => 'تگ با موفقیت ساخته شد',
+        'tag_successfully_updated' => 'تگ با موفقیت آپدیت شد',
+        'tag_successfully_deleted' => 'تگ با موفقیت حذف شد',
+    ],
 ];

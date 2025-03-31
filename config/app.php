@@ -174,7 +174,8 @@ return [
         \Tickets\App\Providers\TicketsServiceProvider::class,
         \Brands\App\Providers\BrandsServiceProvider::class,
         \Attributes\App\Providers\AttributesServiceProvider::class,
-        \Categories\App\Providers\CategoriesServiceProvider::class
+        \Categories\App\Providers\CategoriesServiceProvider::class,
+        \Tags\App\Providers\TagsServiceProvider::class
 
     ])->toArray(),
 
