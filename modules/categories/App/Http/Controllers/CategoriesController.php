@@ -12,6 +12,7 @@ use Categories\App\Http\Requests\StoreCategoryRequest;
 use Categories\App\Http\Requests\UpdateCategoryRequest;
 use Categories\App\Http\Resources\AttributesResource;
 use Categories\App\Http\Resources\CategoriesResource;
+use Categories\App\Http\Resources\CategoryAttributesResource;
 use Categories\App\Models\Category;
 
 class CategoriesController extends Controller
@@ -54,6 +55,14 @@ class CategoriesController extends Controller
 
         return ApiResponseFacade::setMessage(__('messages.categories.category_successfully_created'))
             ->build()->response();
+    }
+
+    public function show(Category $category)
+    {
+        return ApiResponseFacade::setData([
+            'category' => new CategoriesResource($category),
+            'category_attributes' => CategoryAttributesResource::collection($category->attributes)
+        ])->build()->response();
     }
 
     public function destroy(Category $category)
