@@ -175,7 +175,8 @@ return [
         \Brands\App\Providers\BrandsServiceProvider::class,
         \Attributes\App\Providers\AttributesServiceProvider::class,
         \Categories\App\Providers\CategoriesServiceProvider::class,
-        \Tags\App\Providers\TagsServiceProvider::class
+        \Tags\App\Providers\TagsServiceProvider::class,
+        \Products\App\Providers\ProductsServiceProvider::class,
 
     ])->toArray(),
 

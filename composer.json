@@ -40,7 +40,8 @@
             "Brands\\": "modules/brands",
             "Attributes\\": "modules/attributes",
             "Categories\\": "modules/categories",
-            "Tags\\": "modules/tags"
+            "Tags\\": "modules/tags",
+            "Products\\": "modules/products"
         }
     },
     "autoload-dev": {
