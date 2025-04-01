@@ -80,7 +80,7 @@ return [
     'categories' => [
         'category_successfully_created' => 'دسته بندی با موفقیت ساخته شد',
         'category_successfully_updated' => 'دسته بندی با موفقیت آپدیت شد',
-        'category_successfully_deleted' => 'دسته بندی با موفقیت آپدیت شد',
+        'category_successfully_deleted' => 'دسته بندی با موفقیت حذف شد',
     ],
     'tags' => [
         'tag_successfully_created' => 'تگ با موفقیت ساخته شد',
