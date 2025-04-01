@@ -14,11 +14,11 @@ class StoreAttributes
             ];
         }, $request->input('is_filter'));
 
-        array_push($categoryAttributes, [
+        $categoryAttributes[] = [
             'attribute_id' => $request->input('is_variation'),
             'is_filter' => 0,
             'is_variation' => 1
-        ]);
+        ];
 
         $category->attributes()->detach();
 
