@@ -10,7 +10,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_attributes', function (Blueprint $table) {
+        Schema::create('attribute_product', function (Blueprint $table) {
             $table->id();
             $table->foreignId('attribute_id');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');

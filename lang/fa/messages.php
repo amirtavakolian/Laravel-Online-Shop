@@ -87,4 +87,7 @@ return [
         'tag_successfully_updated' => 'تگ با موفقیت آپدیت شد',
         'tag_successfully_deleted' => 'تگ با موفقیت حذف شد',
     ],
+    'products' => [
+        'product_successfully_created' => 'محصول با موفقیت ساخته شد'
+    ],
 ];
