@@ -2,21 +2,27 @@
 
 namespace Products\App\Actions;
 
+use Illuminate\Support\Facades\Storage;
+
 class UploadImages
 {
-
     const PRODUCT_IMAGES_PATH = 'public/images/products';
 
-    public function upload($primaryImage, $secondaryImage)
+    private array $images;
+
+    public function update($oldImages, $images)
     {
-        $images = [];
+        Storage::delete($oldImages);
 
-        $images['primary_image'] = $primaryImage->storeAs(self::PRODUCT_IMAGES_PATH, $primaryImage->hashName());
+        return $this->upload($images);
+    }
 
-        $images['secondary_images'] = collect($secondaryImage)->map(function ($image) {
-            return ['image' => $image->storeAs(self::PRODUCT_IMAGES_PATH, $image->hashName())];
+    public function upload($images): array
+    {
+        $this->images = collect($images)->map(function ($image) {
+            return $image->storeAs(self::PRODUCT_IMAGES_PATH, $image->hashName());
         })->toArray();
 
-        return $images;
+        return $this->images;
     }
 }

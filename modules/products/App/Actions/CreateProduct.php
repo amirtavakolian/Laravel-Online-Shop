@@ -22,13 +22,12 @@ class CreateProduct
             'delivery_amount_per_product' => $request->input('delivery_amount_per_product'),
         ]);
 
-        $product->images()->insert(
-            collect($imagesPath['secondary_images'])
-                ->map(fn($path) => [
-                    'product_id' => $product->id,
-                    'image' => $path,
-                ])->toArray()
-        );
+        $secondaryImages = collect($imagesPath['secondary_images'])->map(fn($path) => [
+            'product_id' => $product->id,
+            'image' => $path,
+        ])->toArray();
+
+        $product->images()->insert($secondaryImages);
 
         return $product;
     }
