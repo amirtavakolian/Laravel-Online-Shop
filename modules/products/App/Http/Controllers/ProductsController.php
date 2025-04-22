@@ -15,6 +15,7 @@ use Products\App\Actions\CreateProductAttribute;
 use Products\App\Actions\UploadImages;
 use Products\App\Http\Requests\StoreProductRequest;
 use Products\App\Http\Requests\UpdateProductRequest;
+use Products\App\Http\Resources\ProductResource;
 use Products\App\Models\Product;
 use Products\App\Models\ProductVariation;
 use Tags\App\Models\Tag;
@@ -29,6 +30,13 @@ class ProductsController extends Controller
     }
 
     public function index()
+    {
+        $products = Product::query()->with(['brand', 'category', 'attributes', 'productVariation', 'images'])->get();
+
+        return ApiResponseFacade::setData(ProductResource::collection($products))->build()->response();
+    }
+
+    public function create()
     {
         $brands = Brand::all();
 
@@ -58,6 +66,7 @@ class ProductsController extends Controller
 
     public function update(Product $product, UpdateProductRequest $request)
     {
+        // Todo => create 3 apis for edit product and its arrtibutes, edit images, edit product's category and attributes
         if ($request->file('primary_image')) {
             $primaryImage = $this->uploader->update($product->primary_image, [$request->file('primary_image')]);
         }
@@ -96,8 +105,6 @@ class ProductsController extends Controller
 
         return ApiResponseFacade::setMessage(__('messages.products.product_successfully_updated'))->build()->response();
     }
-
-
 }
 
 
