@@ -15,6 +15,7 @@
         "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
+        "nwidart/laravel-modules": "^12.0",
         "predis/predis": "^2.2",
         "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-permission": "^6.10"
@@ -41,7 +42,8 @@
             "Attributes\\": "modules/attributes",
             "Categories\\": "modules/categories",
             "Tags\\": "modules/tags",
-            "Products\\": "modules/products"
+            "Products\\": "modules/products",
+            "Modules\\": "modules/"
         }
     },
     "autoload-dev": {
@@ -75,7 +77,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "stable",
