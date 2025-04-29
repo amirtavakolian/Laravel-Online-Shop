@@ -27,7 +27,6 @@ return [
         'enabled' => false,
         'path' => base_path('vendor/nwidart/laravel-modules/src/Commands/stubs'),
         'files' => [
-            'routes/web' => 'routes/web.php',
             'routes/api' => 'routes/api.php',
             'views/index' => 'resources/views/index.blade.php',
             'views/master' => 'resources/views/layouts/master.blade.php',
@@ -165,7 +164,7 @@ return [
             // database/
             'factory' => ['path' => 'database/factories', 'generate' => true],
             'migration' => ['path' => 'database/migrations', 'generate' => true],
-            'seeder' => ['path' => 'database/seeders', 'generate' => true],
+            'seeder' => ['path' => 'database/seeders', 'generate' => false],
 
             // lang/
             'lang' => ['path' => 'lang', 'generate' => true],

@@ -91,4 +91,7 @@ return [
         'product_successfully_created' => 'محصول با موفقیت ساخته شد',
         'product_successfully_updated' => 'محصول با موفقیت آپدیت شد',
     ],
+    'banners' => [
+        'banner_successfully_created' => 'بنر با موفقیت ساخته شد'
+    ],
 ];
