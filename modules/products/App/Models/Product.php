@@ -5,7 +5,9 @@ namespace Products\App\Models;
 use Attributes\App\Models\Attribute;
 use Brands\App\Models\Brand;
 use Categories\App\Models\Category;
+use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Product extends Model
 {
@@ -35,6 +37,15 @@ class Product extends Model
     public function productVariation()
     {
         return $this->hasMany(ProductVariation::class);
+    }
+
+    #[Scope]
+    protected function hasQuantity(Builder $builder)
+    {
+        $builder->whereHas('productVariation', function ($product) {
+            return $product->where('quantity', '>', 0);
+        });
+
     }
 
 }
