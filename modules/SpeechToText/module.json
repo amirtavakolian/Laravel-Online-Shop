@@ -1,0 +1,11 @@
+{
+    "name": "SpeechToText",
+    "alias": "speechtotext",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SpeechToText\\app\\Providers\\SpeechToTextServiceProvider"
+    ],
+    "files": []
+}

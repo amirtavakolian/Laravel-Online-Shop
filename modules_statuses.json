@@ -1,5 +1,5 @@
 {
     "Banners": true,
-    "Index": true
+    "Index": true,
+    "SpeechToText": true
 }
-

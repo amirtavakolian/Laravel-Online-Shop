@@ -43,6 +43,7 @@
             "Categories\\": "modules/categories",
             "Tags\\": "modules/tags",
             "Products\\": "modules/products",
+            "SpeechToText\\": "modules/SpeechToText",
             "Modules\\": "modules/"
         }
     },
